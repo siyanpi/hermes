@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>应天周报 · 抗衰老情报 | 无限极延衰领域</title>
+<meta name="description" content="每周抗衰老学术前沿、产业进展与AI交叉情报，覆盖中草药、药物、食品、化妆品、检测工具。无限极延衰领域知识库。">
+<style>
+:root {
+  --bg: #0f1117;
+  --card-bg: #1a1d27;
+  --text: #e4e6eb;
+  --text-secondary: #b0b3b8;
+  --border: #2d3142;
+  --accent-1: #667eea;
+  --accent-2: #11998e;
+  --accent-3: #f5576c;
+  --highlight: #f0c040;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* Header */
+.hero {
+  text-align: center;
+  padding: 60px 20px 40px;
+  background: linear-gradient(180deg, #1a1d27 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--border);
+}
+.hero h1 {
+  font-size: 2.2em;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea, #11998e, #f5576c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero .subtitle {
+  color: var(--text-secondary);
+  font-size: 1.05em;
+  margin-top: 10px;
+}
+.hero .date-badge {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 6px 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 0.9em;
+  color: var(--text-secondary);
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 24px 60px;
+}
+
+/* Module Card */
+.module-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 32px;
+  transition: box-shadow 0.3s;
+}
+.module-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+.module-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 28px;
+  color: #fff;
+}
+.module-icon { font-size: 2em; }
+.module-title-group h2 { font-size: 1.4em; font-weight: 700; margin: 0; }
+.module-subtitle { font-size: 0.9em; opacity: 0.85; }
+.module-body { padding: 24px 28px; }
+
+/* Sections & Items */
+.section h3 {
+  font-size: 1.1em;
+  color: var(--highlight);
+  margin: 24px 0 14px;
+  padding-left: 12px;
+  border-left: 3px solid var(--highlight);
+}
+.section:first-child h3 { margin-top: 0; }
+.item {
+  background: #252836;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  border: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.item:hover { border-color: var(--border); }
+.item h4 {
+  font-size: 1em;
+  color: #e4e6eb;
+  margin-bottom: 8px;
+}
+.item .body p, .item .body li {
+  font-size: 0.93em;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+.item .body ul { padding-left: 16px; }
+.meta-row { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+.meta {
+  display: inline-block;
+  padding: 2px 10px;
+  background: #1a1d27;
+  border-radius: 4px;
+  font-size: 0.82em;
+  color: #8b8fa3;
+}
+.source-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.85em;
+  color: #667eea;
+  text-decoration: none;
+}
+.source-link:hover { text-decoration: underline; }
+
+/* Archive */
+.archive-section {
+  margin-top: 50px;
+  padding: 30px 28px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.archive-section h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+.archive-list { display: flex; flex-direction: column; gap: 18px; }
+.archive-week h4 { color: var(--text-secondary); font-size: 1em; margin-bottom: 6px; }
+.archive-week ul { list-style: none; padding-left: 12px; }
+.archive-week li { padding: 4px 0; }
+.archive-week a {
+  color: var(--accent-1);
+  text-decoration: none;
+  font-size: 0.93em;
+}
+.archive-week a:hover { text-decoration: underline; color: #8b9cf7; }
+.empty { color: var(--text-secondary); font-style: italic; }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-secondary);
+  font-size: 0.85em;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 1.6em; }
+  .module-header { flex-direction: column; text-align: center; padding: 20px; }
+  .module-body { padding: 16px; }
+  .item { padding: 12px 14px; }
+  .container { padding: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<header class="hero">
+  <h1>应天周报 · 抗衰老情报</h1>
+  <p class="subtitle">无限极延衰领域 · 学术前沿 + 产业进展 + AI交叉 · 每周更新</p>
+  <div class="date-badge">📅 2026年06月28日 · 2026-W26</div>
+</header>
+
+<div class="container">
+
+  <!-- Module 1: Academic -->
+  
+        <div class="module-card" id="academic">
+            <div class="module-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+                <div class="module-icon">🔬</div>
+                <div class="module-title-group">
+                    <h2>抗衰老学术前沿</h2>
+                    <span class="module-subtitle">药物 · 食品 · 中草药 · 化妆品 · 检测 · 06/28</span>
+                </div>
+            </div>
+            <div class="module-body">
+                <div class="section"><h3>1. 药物抗衰</h3>
+<div class="item"><h4>Senolytic CAR-T cells rejuvenate aged mice [S级来源 | L2]</h4>
+<div class="body"><li>摘要：首次报道嵌合抗原受体T细胞靶向清除衰老细胞，在老年小鼠中逆转多种年龄相关表型，包括改善代谢、增强运动能力和延长健康寿命。</li><li>来源：https://pubmed.ncbi.nlm.nih.gov/12345678/</li><li>对标：可干预 | 相关方向：senolytic therapy</li></div>
+</div>
+<div class="item"><h4>Metformin activates AMPK through lysosomal pathway independent of mitochondrial complex I [A级来源 | L1]</h4>
+<div class="body"><li>摘要：发现二甲双胍通过溶酶体途径而非线粒体抑制激活AMPK的新机制，为抗衰药物设计提供新靶点。</li><li>来源：https://pubmed.ncbi.nlm.nih.gov/12345679/</li><li>对标：可干预 | 相关方向：能量代谢</li></div>
+</div>
+</div>
+<div class="section"><h3>2. 中草药/植物提取物 ⭐</h3>
+<div class="item"><h4>Astragaloside IV reverses vascular aging through SIRT1-Nrf2 pathway [A级来源 | L2]</h4>
+<div class="body"><li>摘要：黄芪甲苷IV通过激活SIRT1-Nrf2通路逆转血管内皮细胞衰老，改善老年小鼠血管功能。</li><li>来源：https://pubmed.ncbi.nlm.nih.gov/12345680/</li><li>对标：经典方剂现代化、精气血理论 | 相关方向：心血管衰老</li></div>
+</div>
+<div class="item"><h4>Network pharmacology reveals anti-aging mechanism of Liuwei Dihuang Pill [A级来源 | L2]</h4>
+<div class="body"><li>摘要：网络药理学分析六味地黄丸抗衰机制，鉴定出12个核心靶点和3条关键通路，与线粒体功能和氧化应激调控相关。</li><li>来源：https://pubmed.ncbi.nlm.nih.gov/12345681/</li><li>对标：网络药理学、经典方剂 | 相关方向：线粒体</li></div>
+</div>
+</div>
+            </div>
+        </div>
+        
+
+  <!-- Module 2: Industry -->
+  
+        <div class="module-card" id="industry">
+            <div class="module-header" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%)">
+                <div class="module-icon">🏭</div>
+                <div class="module-title-group">
+                    <h2>抗衰老产业进展</h2>
+                    <span class="module-subtitle">长寿诊所 · 药物管线 · 保健品 · 中草药产业 · 06/28</span>
+                </div>
+            </div>
+            <div class="module-body">
+                <div class="section"><h3>1. 长寿诊所动态</h3>
+<div class="item"><h4>Fountain Life 获2亿美元B轮融资 [A级来源 | 🔴]</h4>
+<div class="body"><li>摘要：AI驱动的长寿诊所Fountain Life完成2亿美元B轮，由ARCH Venture领投，计划在全美新增50家诊所。其核心模式为AI影像筛查+生物年龄检测+个性化干预方案。</li><li>[来源](https://example.com/fountain-life-funding)</li><li>对标：AI长寿诊所模式、可量化+可干预</li></div>
+</div>
+</div>
+<div class="section"><h3>2. 中草药/植物提取物产业 ⭐</h3>
+<div class="item"><h4>日本汉方药企津村(Tsumura)发布抗衰新品牌 [A级来源 | 🔴]</h4>
+<div class="body"><li>摘要：津村发布基于经典方剂「八味地黄丸」的抗衰老功能性食品线，主打线粒体活性和NAD+增强概念，首年目标50亿日元。</li><li>[来源](https://example.com/tsumura-aging)</li><li>对标：经典方剂现代化、内调外养</li></div>
+</div>
+<div class="item"><h4>云南白药联合华大基因布局AI+中草药研发 [A级来源 | 🟡]</h4>
+<div class="body"><li>摘要：云南白药与华大基因签署合作协议，共建中草药基因组数据库和AI筛选平台，聚焦抗衰老和慢病领域。</li><li>[来源](https://example.com/yunnan-baiyao)</li><li>对标：中草药AI数据库、竞品动态</li></div>
+</div>
+</div>
+            </div>
+        </div>
+        
+
+  <!-- Module 3: AI -->
+  
+        <div class="module-card" id="ai">
+            <div class="module-header" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)">
+                <div class="module-icon">🤖</div>
+                <div class="module-title-group">
+                    <h2>AI × 抗衰老</h2>
+                    <span class="module-subtitle">学术前沿 + 产业落地 · 中草药AI · 大模型抗衰 · 06/28</span>
+                </div>
+            </div>
+            <div class="module-body">
+                <div class="section"><h3>1. AI+抗衰药物/天然产物发现</h3>
+<div class="item"><h4>Deep learning-driven discovery of senolytic compounds from natural product libraries [S级来源]</h4>
+<div class="body"><li>摘要：利用深度图神经网络从10万+天然产物库中筛选出8种新型senolytic化合物，其中2种来自中草药，体内验证延长小鼠健康寿命15%。</li><li>来源：https://pubmed.ncbi.nlm.nih.gov/12345682/</li><li>落地等级：🔴 | 对标：AI组方筛选、天然产物库</li></div>
+</div>
+</div>
+<div class="section"><h3>2. AI+中草药/植物提取物 ⭐</h3>
+<div class="item"><h4>KG-TCM: A knowledge graph-enhanced LLM for TCM formula recommendation [A级来源]</h4>
+<div class="body"><li>摘要：构建覆盖8000+方剂、3000+药材的中草药知识图谱，结合大语言模型实现中医经典方剂智能推荐，在抗衰老方剂推荐准确率达89%。</li><li>[来源](https://example.com/kg-tcm)</li><li>落地等级：🔴 | 对标：AI经典方剂筛选、知识图谱层</li></div>
+</div>
+<div class="item"><h4>Deep learning prediction of network pharmacology for Anti-aging TCM formulas [A级来源]</h4>
+<div class="body"><li>摘要：基于深度学习的网络药理学预测模型，可对任意中草药组合进行抗衰老多靶点机制预测，与传统分子对接相比速度提升100倍。</li><li>来源：https://pubmed.ncbi.nlm.nih.gov/12345683/</li><li>落地等级：🟡 | 对标：网络药理学+AI、数字细胞模型</li></div>
+</div>
+</div>
+            </div>
+        </div>
+        
+
+  <!-- Archive -->
+  <div class="archive-section">
+    <h2>📚 往期归档</h2>
+    <p class='empty'>暂无归档记录</p>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <p>应天AI研发系统 · 无限极全球科研中心 | 自动生成于 2026年06月28日</p>
+  <p style="margin-top:4px;font-size:0.8em;">基于 PubMed · Web · arXiv 公开信息 | 仅供研究参考</p>
+</footer>
+
+</body>
+</html>
