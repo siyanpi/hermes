@@ -245,5 +245,26 @@ def build():
     return str(output_path)
 
 
+def deploy():
+    """Git commit and push to GitHub Pages."""
+    import subprocess
+
+    repo_dir = PORTAL_DIR.parent  # weekly_portal/
+    try:
+        subprocess.run(["git", "add", "-A"], cwd=repo_dir, check=True, capture_output=True)
+        subprocess.run(
+            ["git", "commit", "-m", f"weekly update {WEEK_LABEL} - {DATE_CN}"],
+            cwd=repo_dir, capture_output=True,
+        )
+        result = subprocess.run(["git", "push"], cwd=repo_dir, capture_output=True, text=True)
+        if result.returncode == 0:
+            print(f"🚀 已部署到 https://siyanpi.github.io/hermes/")
+        else:
+            print(f"⚠️ 推送失败: {result.stderr}")
+    except Exception as e:
+        print(f"⚠️ 部署异常: {e}")
+
+
 if __name__ == "__main__":
     build()
+    deploy()
