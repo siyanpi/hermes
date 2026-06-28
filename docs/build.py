@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 BRIEFING_DIR = Path.home() / "Desktop/Infinitus/weekly_briefings"
-PORTAL_DIR = Path.home() / "Desktop/Infinitus/weekly_portal"
+PORTAL_DIR = Path.home() / "Desktop/Infinitus/weekly_portal/docs"
 ARCHIVE_DIR = PORTAL_DIR / "archive"
 
 NOW = datetime.now()
