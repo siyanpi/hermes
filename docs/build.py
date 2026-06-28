@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
 """
-应天周报门户 — 构建脚本
-读取3个周报md文件 → 生成HTML网页 → 归档旧文件
+应天周报门户 v2 — 4模块构建脚本
+读取4个周报md文件 → 生成HTML网页（DOI/source可点击）→ 归档 → 部署
 """
 
 import os
 import re
 import shutil
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
+from typing import Optional
 
-BRIEFING_DIR = Path.home() / "Desktop/Infinitus/weekly_briefings"
+BRIEFING_DIR = Path("/Users/cc/Desktop/Hermes")
 PORTAL_DIR = Path.home() / "Desktop/Infinitus/weekly_portal/docs"
 ARCHIVE_DIR = PORTAL_DIR / "archive"
+TEMPLATE_PATH = PORTAL_DIR / "template.html"
 
 NOW = datetime.now()
 WEEK_LABEL = NOW.strftime("%Y-W%U")
@@ -22,129 +24,136 @@ BRIEFINGS = {
     "academic": {
         "id": "academic",
         "title": "抗衰老学术前沿",
-        "subtitle": "药物 · 食品 · 中草药 · 化妆品 · 检测",
+        "subtitle": "线粒体 · 细胞衰老 · 中草药 · 表观遗传 · 检测工具",
         "icon": "🔬",
-        "color": "#1a5276",
         "pattern": "briefing1_academic_",
         "bg": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "file_label": "briefing1_academic",
     },
     "industry": {
         "id": "industry",
         "title": "抗衰老产业进展",
-        "subtitle": "长寿诊所 · 药物管线 · 保健品 · 中草药产业",
+        "subtitle": "逆龄疗法 · 药物管线 · 产业融资 · 中草药产业 · 检测",
         "icon": "🏭",
-        "color": "#0e6655",
         "pattern": "briefing2_industry_",
         "bg": "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
+        "file_label": "briefing2_industry",
     },
-    "ai": {
-        "id": "ai",
+    "ai_aging": {
+        "id": "ai_aging",
         "title": "AI × 抗衰老",
-        "subtitle": "学术前沿 + 产业落地 · 中草药AI · 大模型抗衰",
+        "subtitle": "AI药物发现 · 衰老时钟 · 中草药AI · 蛋白质组学",
         "icon": "🤖",
-        "color": "#6c3483",
-        "pattern": "briefing3_ai_aging_",
+        "pattern": "briefing3_AI_aging_",
         "bg": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+        "file_label": "briefing3_AI_aging",
+    },
+    "ai_apps": {
+        "id": "ai_apps",
+        "title": "AI 抗衰应用落地",
+        "subtitle": "AI药物临床 · 长寿委员会 · 大模型 · 数字孪生 · 投融资",
+        "icon": "⚡",
+        "pattern": "briefing4_ai_apps_",
+        "bg": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+        "file_label": "briefing4_ai_apps",
     },
 }
 
 
-from typing import Optional
-
 def find_latest_briefing(pattern: str) -> Optional[Path]:
-    """Find the most recent briefing file matching pattern."""
     files = sorted(BRIEFING_DIR.glob(f"{pattern}*.md"), reverse=True)
     return files[0] if files else None
 
 
-def md_to_html_sections(md_text: str) -> str:
-    """Convert markdown briefing to HTML sections."""
-    lines = md_text.split("\n")
-    sections = []
-    current_section = None
-    current_items = []
+def process_line_for_links(line: str) -> str:
+    """Convert DOIs and URLs into clickable HTML links."""
+    # DOI pattern: "DOI: 10.xxx/xxx" or "DOI:10.xxx/xxx"
+    line = re.sub(
+        r'DOI:?\s*(10\.\d{4,}/[^\s)\].,;]+)',
+        r'<a href="https://doi.org/\1" target="_blank" class="source-link">DOI: \1</a>',
+        line,
+    )
 
-    for line in lines:
-        line = line.rstrip()
+    # URL pattern: bare https:// links
+    line = re.sub(
+        r'(https?://[^\s)\].,;]+)',
+        r'<a href="\1" target="_blank" class="source-link">\1</a>',
+        line,
+    )
 
-        # H1 → skip (already in page header)
-        if line.startswith("# "):
-            continue
+    # Source mentions: （来源：XXX）→ italicized
+    line = re.sub(
+        r'（(来源[：:].+?)）',
+        r'<span class="source-ref">（\1）</span>',
+        line,
+    )
 
-        # H2 → start new section
-        if line.startswith("## "):
-            if current_section and current_items:
-                sections.append((current_section, current_items))
-            current_section = line[3:].strip()
-            current_items = []
-            continue
+    return line
 
-        # H3 → new item
-        if line.startswith("### "):
-            current_items.append({"title": line[4:].strip(), "lines": []})
-            continue
 
-        # Collect lines for current item
-        if current_items:
-            current_items[-1]["lines"].append(line)
-
-    if current_section and current_items:
-        sections.append((current_section, current_items))
-
-    # Build HTML
+def md_to_html(content: str) -> str:
+    """Convert markdown briefing to HTML with clickable links."""
+    lines = content.split("\n")
     html_parts = []
-    for section_title, items in sections:
-        # Skip calibration footer and empty sections
-        if "校准" in section_title or "✅" in section_title:
+    in_blockquote = False
+    skip_header = True  # Skip the # title line
+
+    i = 0
+    while i < len(lines):
+        line = lines[i].rstrip()
+
+        # Skip H1
+        if line.startswith("# ") and skip_header:
+            skip_header = False
+            i += 1
             continue
-        if not items:
+        skip_header = False
+
+        # H2 → section header
+        if line.startswith("## "):
+            section = line[3:].strip()
+            # Strip emoji prefix for cleaner display
+            html_parts.append(f'<div class="section"><h3>{section}</h3>')
+            i += 1
             continue
 
-        html_parts.append(f'<div class="section"><h3>{section_title}</h3>')
+        # H3 → item title, collect everything until next H2/H3 or end
+        if line.startswith("### "):
+            title = line[4:].strip()
+            html_parts.append(f'<div class="item"><h4>{process_line_for_links(title)}</h4>')
+            i += 1
 
-        for item in items:
-            title = item["title"]
-            html_parts.append(f'<div class="item"><h4>{title}</h4>')
+            # Collect all content until next heading or separator
+            body = []
+            while i < len(lines):
+                l = lines[i].rstrip()
+                if l.startswith("## ") or l.startswith("### ") or l.startswith("---"):
+                    break
+                if l.strip():
+                    body.append(process_line_for_links(l))
+                i += 1
 
-            body_lines = []
-            source_link = ""
-            meta_info = ""
+            if body:
+                html_parts.append(f'<div class="body">{" ".join(f"<p>{b}</p>" for b in body)}</div>')
+            html_parts.append("</div>")
+            continue
 
-            for l in item["lines"]:
-                stripped = l.strip()
-                if not stripped:
-                    continue
-                if stripped.startswith("来源：") or stripped.startswith("[来源]"):
-                    # Extract URL
-                    url_match = re.search(r"https?://[^\s)\]]+", stripped)
-                    if url_match:
-                        source_link = url_match.group(0)
-                elif stripped.startswith("对标：") or stripped.startswith("证据等级") or stripped.startswith("落地") or stripped.startswith("相关方向"):
-                    meta_info += f'<span class="meta">{stripped}</span> '
-                elif stripped.startswith("- "):
-                    body_lines.append(f"<li>{stripped[2:]}</li>")
-                else:
-                    body_lines.append(f"<p>{stripped}</p>")
+        # Separator
+        if line.startswith("---"):
+            if in_blockquote:
+                html_parts.append("</blockquote>")
+                in_blockquote = False
+            i += 1
+            continue
 
-            if body_lines:
-                html_parts.append(f'<div class="body">{"".join(body_lines)}</div>')
-            if meta_info:
-                html_parts.append(f'<div class="meta-row">{meta_info}</div>')
-            if source_link:
-                html_parts.append(
-                    f'<a href="{source_link}" target="_blank" class="source-link">📎 查看来源</a>'
-                )
+        i += 1
 
-            html_parts.append("</div>")  # close item
-
-        html_parts.append("</div>")  # close section
-
+    # Close last section
+    html_parts.append("</div>")
     return "\n".join(html_parts)
 
 
 def generate_archive_index() -> str:
-    """Generate archive listing HTML."""
-    # Group archived files by week
     weeks = {}
     for f in sorted(ARCHIVE_DIR.glob("**/*.md"), reverse=True):
         week_dir = f.parent.name
@@ -155,21 +164,23 @@ def generate_archive_index() -> str:
     if not weeks:
         return "<p class='empty'>暂无归档记录</p>"
 
+    label_map = {
+        "academic": "🔬 学术前沿",
+        "industry": "🏭 产业进展",
+        "ai_aging": "🤖 AI×抗衰老",
+        "ai_apps": "⚡ AI应用落地",
+    }
+
     html = '<div class="archive-list">'
     for week, files in sorted(weeks.items(), reverse=True):
         html += f'<div class="archive-week"><h4>📅 {week}</h4><ul>'
         for f in sorted(files):
-            label = {
-                "academic": "🔬 学术前沿",
-                "industry": "🏭 产业进展",
-                "ai": "🤖 AI×抗衰老",
-            }
             key = None
-            for k in label:
+            for k in label_map:
                 if k in f.stem:
                     key = k
                     break
-            display = label.get(key, f.stem)
+            display = label_map.get(key, f.stem)
             rel_path = f.relative_to(PORTAL_DIR)
             html += f'<li><a href="{rel_path}">{display}</a></li>'
         html += "</ul></div>"
@@ -178,29 +189,36 @@ def generate_archive_index() -> str:
 
 
 def build():
-    """Main build function."""
-    briefing_html = {}
+    briefing_data = {}
+    full_reports = []
 
     for key, cfg in BRIEFINGS.items():
         f = find_latest_briefing(cfg["pattern"])
         if f:
             content = f.read_text(encoding="utf-8")
-            briefing_html[key] = {
+            briefing_data[key] = {
                 "config": cfg,
                 "path": str(f),
-                "html": md_to_html_sections(content),
+                "filename": f.name,
+                "html": md_to_html(content),
                 "date": datetime.fromtimestamp(f.stat().st_mtime).strftime("%m/%d"),
             }
+            full_reports.append((cfg["file_label"], f))
 
-    # Read the HTML template
-    template = (PORTAL_DIR / "template.html").read_text(encoding="utf-8")
+    # Copy full .md files to docs/ for deep-dive access
+    for file_label, src_path in full_reports:
+        dst_path = PORTAL_DIR / f"{file_label}.md"
+        shutil.copy2(src_path, dst_path)
+        print(f"📄 完整报告: {dst_path}")
 
-    # Fill in modules
-    for key, data in briefing_html.items():
+    # Read template
+    template = TEMPLATE_PATH.read_text(encoding="utf-8")
+
+    # Fill modules
+    for key, data in briefing_data.items():
         cfg = data["config"]
-        placeholder = f"<!-- {key}_module -->" if f"<!-- {key}_module -->" in template else None
-        if not placeholder:
-            continue
+        md_file = f"{cfg['file_label']}.md"
+        placeholder = f"<!-- {key}_module -->"
 
         card_html = f"""
         <div class="module-card" id="{cfg['id']}">
@@ -212,30 +230,26 @@ def build():
                 </div>
             </div>
             <div class="module-body">
+                <a href="{md_file}" class="full-report-link" target="_blank">📄 查看完整报告</a>
                 {data['html']}
             </div>
         </div>
         """
-        template = template.replace(f"<!-- {key}_module -->", card_html)
+        template = template.replace(placeholder, card_html)
 
-    # Archive section
     archive_html = generate_archive_index()
     template = template.replace("<!-- archive -->", archive_html)
-
-    # Date
     template = template.replace("{{date}}", DATE_CN)
     template = template.replace("{{week}}", WEEK_LABEL)
 
-    # Write output
     output_path = PORTAL_DIR / "index.html"
     output_path.write_text(template, encoding="utf-8")
     print(f"✅ 门户页面已生成: {output_path}")
 
-    # Archive current files
+    # Archive
     week_archive = ARCHIVE_DIR / WEEK_LABEL
     week_archive.mkdir(parents=True, exist_ok=True)
-
-    for key, data in briefing_html.items():
+    for key, data in briefing_data.items():
         src = Path(data["path"])
         dst = week_archive / f"{key}_{src.name}"
         if not dst.exists():
@@ -246,10 +260,8 @@ def build():
 
 
 def deploy():
-    """Git commit and push to GitHub Pages."""
     import subprocess
-
-    repo_dir = PORTAL_DIR.parent  # weekly_portal/
+    repo_dir = PORTAL_DIR.parent
     try:
         subprocess.run(["git", "add", "-A"], cwd=repo_dir, check=True, capture_output=True)
         subprocess.run(
@@ -260,7 +272,7 @@ def deploy():
         if result.returncode == 0:
             print(f"🚀 已部署到 https://siyanpi.github.io/hermes/")
         else:
-            print(f"⚠️ 推送失败: {result.stderr}")
+            print(f"⚠️ 推送: {result.stderr}")
     except Exception as e:
         print(f"⚠️ 部署异常: {e}")
 
