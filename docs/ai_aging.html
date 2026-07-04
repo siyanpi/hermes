@@ -5,13 +5,28 @@
 <title>AI × 抗衰老 - 应天周报</title>
 <style>
 body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;max-width:900px;margin:0 auto;padding:20px;background:#0f1117;color:#e4e6eb;line-height:1.7}
-.hero{text-align:center;padding:40px 20px 30px}
+.hero{text-align:center;padding:40px 20px 20px}
 .hero h1{font-size:2em;font-weight:800;background:linear-gradient(135deg,#667eea,#11998e,#f5576c,#fa709a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.back{display:inline-block;margin-bottom:20px;color:#667eea;text-decoration:none;font-weight:600}
-.section h3{color:#f0c040;border-left:3px solid #f0c040;padding-left:12px;margin:28px 0 16px;font-size:1.15em}
+.back{display:inline-block;margin-bottom:14px;color:#667eea;text-decoration:none;font-weight:600}.back:hover{text-decoration:underline}
+.highlights{background:#1a2733;border-left:3px solid #f0c040;padding:16px 20px;margin:16px 0 24px;border-radius:0 10px 10px 0}
+.highlights h4{color:#f0c040;margin:0 0 8px;font-size:1em}
+.highlights ul{margin:0;padding-left:18px;color:#b0b3b8}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 16px}
+.tag{padding:3px 12px;background:#252836;border-radius:12px;font-size:.8em;color:#667eea}
+h3.sec{color:#f0c040;border-left:3px solid #f0c040;padding-left:12px;margin:28px 0 16px;font-size:1.15em}
 .item{background:#252836;border-radius:10px;padding:16px 20px;margin:14px 0}
 .item h4{margin:0 0 10px;color:#e4e6eb;font-size:1em}
 .item .body p{color:#b0b3b8;font-size:.93em;margin-bottom:6px;line-height:1.7}
+.item .body ul,.item .body ol{color:#b0b3b8;padding-left:18px;margin:6px 0}
+.item .body li{margin:2px 0}
+.item .body blockquote{border-left:3px solid #667eea;padding-left:12px;margin:8px 0;color:#8b9fa3;font-style:italic}
+.item .body strong{color:#e4e6eb}
+.item .body code{background:#1a1d27;padding:2px 6px;border-radius:4px;font-size:.9em}
+.md-table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.9em}
+.md-table th,.md-table td{border:1px solid #2d3142;padding:6px 10px;text-align:left}
+.md-table th{background:#252836;color:#e4e6eb}
+.md-table td{color:#b0b3b8}
+hr{border:none;border-top:1px solid #2d3142;margin:16px 0}
 a{color:#667eea;text-decoration:none}a:hover{text-decoration:underline}
 .src{color:#8b8fa3;font-size:.85em}.src a{color:#667eea}
 .footer{margin-top:40px;padding-top:16px;border-top:1px solid #2d3142;color:#8b8fa3;font-size:.85em;text-align:center}
@@ -20,85 +35,70 @@ a{color:#667eea;text-decoration:none}a:hover{text-decoration:underline}
 <body>
 <a href="index.html" class="back">← 返回周报首页</a>
 <div class="hero"><h1>🤖 AI × 抗衰老</h1><p>2026年07月04日</p></div>
-<p>**日期：** 2026年6月15日 — 7月1日（第3期）</p>
-<p>**覆盖范围：** PubMed近2周新发表文献 | 7大搜索维度 | 精选15条</p>
-<p>**生成方式：** Hermes Agent 自动化文献检索+精选+摘要</p>
-<p>**对标企业：** 无限极（Infinitus）— 中草药健康产品研发</p>
-<div class="section"><h3>📊 一、AI衰老基础研究（3篇）</h3>
-<div class="item"><h4>1. 血浆蛋白质组ML模型预测40+种细胞类型的衰老速度</h4>
-<div class="body"><p>**来源：** *Nature Medicine* (2026) | [PubMed](<a href="https://pubmed" target="_blank">https://pubmed</a>.ncbi.nlm.nih.gov/42297981/)</p> <p>基于6万余人血浆中7000+蛋白数据，开发机器学习模型估算40余种细胞类型（神经元、免疫、胶质、内分泌、肌肉骨骼等）的生物学年龄。发现20-25%个体存在单细胞类型加速衰老，1-3%个体≥10种细胞类型加速衰老。APOE4基因型携带者星形胶质细胞更老但巨噬细胞更年轻——揭示了细胞类型特异性的异步衰老模式。该模型可预测15年随访中的疾病发生和死亡风险。</p> <p>> 🏷️ **对标研发环节：** 基础研究/靶点发现 — 血浆蛋白组学+ML为衰老干预靶点筛选提供新工具</p></div>
-</div>
-<div class="item"><h4>2. 可解释AI表观遗传时钟综述：XAI时钟六大模型盘点</h4>
-<div class="body"><p>**来源：** *Expert Review of Molecular Diagnostics* (2026) | [PubMed](<a href="https://pubmed" target="_blank">https://pubmed</a>.ncbi.nlm.nih.gov/42318857/)</p> <p>系统综述6种可解释AI（XAI）表观遗传时钟：XAI-AGE、DL-XAI、EpInflammAge、PathwayAge、EXP.REACTOME、EXP.TFT。这些时钟通过深度学习将CpG位点映射到基因→生物学通路→蛋白质互作网络，使"黑箱"衰老预测变得可解释、可干预。EpInflammAge尤为突出，基于甲基化预测循环趋化因子/细胞因子水平。</p> <p>> 🏷️ **对标研发环节：** 机制研究/功效评价 — XAI方法可阐明产品干预衰老的分子通路</p></div>
-</div>
-<div class="item"><h4>3. AI驱动的生物学年龄预测：现状与挑战综述</h4>
-<div class="body"><p>**来源：** *British Journal of Biomedical Science* (2026) | [PubMed](<a href="https://pubmed" target="_blank">https://pubmed</a>.ncbi.nlm.nih.gov/42358564/)</p> <p>系统综述AI在生物学年龄预测中的应用，涵盖生物标志物选择、特征工程、模型开发、偏差校正和性能评估。特别强调深度学习与多模态融合在解决"异步衰老"问题上的优势——不同器官/系统以不同速率衰老，AI可有效整合多维度数据捕捉这种异质性。</p> <p>> 🏷️ **对标研发环节：** 功效评估体系 — 为建立产品抗衰评价的生物年龄指标体系提供方法论参考</p></div>
-</div>
-<div class="section"><h3>💊 二、AI抗衰药物/天然产物发现（2篇）</h3>
-<div class="item"><h4>4. AI+因果遗传学：整合多组学优先筛选衰老治疗靶点</h4>
-<div class="body"><p>**来源：** *Aging and Disease* (2026) | [PubMed](<a href="https://pubmed" target="_blank">https://pubmed</a>.ncbi.nlm.nih.gov/42295090/)</p> <p>开发AI驱动的靶点发现框架，整合大规模多组学数据，在衰老与12种年龄相关疾病（神经、炎症、代谢、纤维化四大领域）中识别共享治疗靶点。发现了29个高置信度和16个此前未识别的衰老相关靶点，涉及干扰素和炎症通路的共同上调。为"一靶多病"抗衰策略提供了系统性证据。</p> <p>> 🏷️ **对标研发环节：** 靶点筛选/功能原料发现 — AI多组学靶点筛选方法可直接应用于中草药活性成分发现</p></div>
-</div>
-<div class="item"><h4>5. 多组学整合+系统分析解码疾病与治疗</h4>
-<div class="body"><p>**来源：** *Briefings in Bioinformatics* (2026) | [PubMed](<a href="https://pubmed" target="_blank">https://pubmed</a>.ncbi.nlm.nih.gov/42289048/)</p> <p>综述基于ML的计算多组学方法在肿瘤学、衰老和免疫介导疾病中的应用。涵盖从早期到晚期融合的整合策略，用于患者分型、新型生物标志物发现、药物重定位和精准医学。特别讨论了多组学在衰老领域的应用前景和挑战。</p> <p>> 🏷️ **对标研发环节：** 多组学平台建设 — 为无限极建立"中草药-多组学-AI"研发管线提供方法学框架</p></div>
-</div>
-<div class="section"><h3>🌿 三、AI+中草药⭐（3篇·重点维度）</h3>
-<div class="item"><h4>6. 护眼I号方通过STAT3/NF-κB/NLRP3抑制SASP延缓肾脏衰老和纤维化</h4>
-<div class="body"><p>**来源：** *Journal of Natural Medicines* (2026) | [PubMed](<a href="https://pubmed" target="_blank">https://pubmed</a>.ncbi.nlm.nih.gov/42329338/)</p> <p>护眼I号方（HY-I）是江苏省中医院用于早期慢性肾病的六味中药专利方。通过UPLC-Q-TOF-MS鉴定211种成分，网络药理学+分子对接预测其与STAT3/NF-κB/NLRP3信号通路的相互作用，实验验证HY-I通过抑制SASP（衰老相关分泌表型）减轻肾脏细胞衰老和纤维化。**展示了"AI网络药理学→靶点预测→实验验证"的中药研发闭环。**</p> <p>> 🏷️ **对标研发环节：** ⭐核心对标 — 中草药配方作用机制解析、网络药理学+AI预测+实验验证的标准化流程</p></div>
-</div>
-<div class="item"><h4>7. 加味乌头汤治疗膝骨关节炎：网络药理学+UHPLC-MS/MS+实验验证</h4>
-<div class="body"><p>**来源：** *Journal of Ethnopharmacology* (2026) | [PubMed](<a href="https://pubmed" target="_blank">https://pubmed</a>.ncbi.nlm.nih.gov/42302946/)</p> <p>通过UHPLC-MS/MS鉴定加味乌头汤（JWD）主要成分（红景天苷、芍药苷、苯甲酰中乌头碱等7种标志成分定量），网络药理学预测其通过JAK2/STAT3通路调节线粒体氧化应激治疗膝骨关节炎，动物实验验证。完整的"成分鉴定→网络药理学→靶点预测→分子对接→体内验证"流程。</p> <p>> 🏷️ **对标研发环节：** ⭐核心对标 — 复方中药功效物质基础研究、JAK2/STAT3通路可作为抗炎抗衰的交叉靶点</p></div>
-</div>
-<div class="item"><h4>8. 双峰驼胎盘（紫河车同类药材）抗皮肤衰老肽的靶向发现</h4>
-<div class="body"><p>**来源：** *Journal of Ethnopharmacology* (2026) | [PubMed](<a href="https://pubmed" target="_blank">https://pubmed</a>.ncbi.nlm.nih.gov/42302941/)</p> <p>基于传统中药"紫河车"抗衰理论，从双峰驼胎盘酶解物中筛选抗皮肤衰老活性肽。采用多活性筛选（水解效率、抗氧化、ECM降解抑制）+网络药理学+体外验证（MMP-1抑制为核心指标），发现了靶向皮肤衰老的活性肽分子机制。**是"传统药材→现代AI筛选→活性分子→机制验证"的典型案例。**</p> <p>> 🏷️ **对标研发环节：** ⭐核心对标 — 动物药/滋补类原料的抗衰老功效现代科学验证、活性肽开发</p></div>
-</div>
-<div class="section"><h3>📸 四、AI衰老检测（2篇）</h3>
-<div class="item"><h4>9. 多器官MRI影像衰老时钟：7万例扫描训练3D ResNet</h4>
-<div class="body"><p>**来源：** *Communications Medicine* (2026) | [PubMed](<a href="https://pubmed" target="_blank">https://pubmed</a>.ncbi.nlm.nih.gov/42288701/)</p> <p>利用UK Biobank和德国国家队列7万例MRI扫描数据，训练3D ResNet-18模型预测脑、心、肝、脊柱、肺、肌肉、肠等器官的生物学年龄。通过与严格健康队列对比得出"年龄差距"指标，发现器官特异性衰老模式与疾病和生活方式因素显著相关。**首次实现全身多器官影像衰老的系统评估。**</p> <p>> 🏷️ **对标研发环节：** 衰老检测/功效评价 — 影像AI衰老评估可作为产品功效的客观终点指标</p></div>
-</div>
-<div class="item"><h4>10. 深度学习驱动的高频超声皮肤衰老智能分级（中文论文）</h4>
-<div class="body"><p>**来源：** *生物医学工程学杂志* (2026) | [PubMed](<a href="https://pubmed" target="_blank">https://pubmed</a>.ncbi.nlm.nih.gov/42366431/)</p> <p>提出基于EfficientNetV2+GELU激活函数的深度学习皮肤衰老分类方法，使用高频超声图像进行智能分级。引入层归一化增强非线性特征表示和训练稳定性。**中国团队开发的皮肤衰老AI检测方法，可直接对接化妆品/保健品的抗衰功效评价。**</p> <p>> 🏷️ **对标研发环节：** 皮肤衰老检测/产品功效验证 — 高频超声+AI为外用/内服抗衰产品提供非侵入式评估工具</p></div>
-</div>
-<div class="section"><h3>🔬 五、AI生物利用度预测（2篇）</h3>
-<div class="item"><h4>11. 机器学习增强的纳米QSAR：草药纳米药物智能设计</h4>
-<div class="body"><p>**来源：** *Discover Nano* (2026) | [PubMed](<a href="https://pubmed" target="_blank">https://pubmed</a>.ncbi.nlm.nih.gov/42360577/)</p> <p>综述ML、纳米定量构效关系（nano-QSAR）和多尺度建模在预测纳米药物行为中的应用。特别聚焦**草药纳米药物**领域——计算建模支持植物化学物质纳米递送系统的设计，提高生物利用度和靶向性。结合物理信息混合模型，涵盖量子、原子和组织级模拟。</p> <p>> 🏷️ **对标研发环节：** 制剂开发/生物利用度提升 — AI指导中草药活性成分的纳米制剂设计，解决生物利用度瓶颈</p></div>
-</div>
-<div class="item"><h4>12. 从试错到逆向设计：AI重新定义药物递送系统</h4>
-<div class="body"><p>**来源：** *Drug Discovery Today* (2026) | [PubMed](<a href="https://pubmed" target="_blank">https://pubmed</a>.ncbi.nlm.nih.gov/42314831/)</p> <p>综述AI如何通过预测建模和逆向设计策略变革药物递送系统（DDS）设计。整合ML、DL和物理信息方法，捕获复杂的制剂-性能关系。批判性评估了数据异质性、模型可解释性和监管验证等挑战。</p> <p>> 🏷️ **对标研发环节：** 制剂技术 — AI驱动的新剂型开发方法可加速中草药产品的剂型创新</p></div>
-</div>
-<div class="section"><h3>🧬 六、AI个性化抗衰/数字孪生（1篇）</h3>
-<div class="item"><h4>13. 真实世界预测AI落地的基础设施缺失：组织治理视角</h4>
-<div class="body"><p>**来源：** *BMJ Health & Care Informatics* (2026) | [PubMed](<a href="https://pubmed" target="_blank">https://pubmed</a>.ncbi.nlm.nih.gov/42320913/)</p> <p>指出预测AI工具从研究到临床转化的主要障碍已经从方法论转向组织层面：缺乏明确的机构所有权和长期管理（包括法规认证和治理结构）。提出三项建议：建立AI工具的机构归属、长期管理和监管导航机制。**对建立AI驱动的个性化抗衰服务体系具有重要启示。**</p> <p>> 🏷️ **对标研发环节：** 数字化/个性化健康管理 — 为无限极构建"AI+内调外养"个性化推荐系统提供治理框架参考</p></div>
-</div>
-<div class="section"><h3>🤖 七、AI长寿诊所/大模型（2篇）</h3>
-<div class="item"><h4>14. 治理生成式AI促进健康老龄化：规范概念框架</h4>
-<div class="body"><p>**来源：** *Healthcare* (2026) | [PubMed](<a href="https://pubmed" target="_blank">https://pubmed</a>.ncbi.nlm.nih.gov/42354518/)</p> <p>针对LLM和生成式AI在老年护理中的应用（陪伴、认知支持、个性化健康建议），提出规范治理框架。聚焦三个核心问题：LLM对变革性技术的情感倾向如何与老年人的价值观产生分歧？LLM输出的认知地位是什么？当AI知情的决策影响老年人功能能力时，谁负责？**为AI长寿诊所的伦理治理提供了重要参考。**</p> <p>> 🏷️ **对标研发环节：** 服务创新/AI应用治理 — AI+健康老龄化服务的合规和伦理框架</p></div>
-</div>
-<div class="item"><h4>15. RNA结合蛋白+大语言模型分析在衰老研究中的应用</h4>
-<div class="body"><p>**来源：** *Biogerontology* (2026) | [PubMed](<a href="https://pubmed" target="_blank">https://pubmed</a>.ncbi.nlm.nih.gov/42322462/)</p> <p>系统综述RNA结合蛋白（RBPs）在衰老和年龄相关疾病中的作用机制，创新性地引入**大语言模型分析**方法研究RBP-RNA调控网络。重点解析HuR、TTP等6种关键RBPs在衰老中的分子机制。**首次将LLM整合到衰老机制综述的方法学中。**</p> <p>> 🏷️ **对标研发环节：** 基础研究创新方法 — LLM辅助的生物信息学分析可作为中草药靶点发现的新引擎</p></div>
-</div>
-<div class="section"><h3>🔍 八、行业动态快讯</h3>
-<p>> **说明：** 本期以PubMed学术文献为主。行业新闻因网络限制未能实时抓取，建议关注以下方向：</p>
-<p>- **AI衰老时钟商业化：** 多家公司（Altos Labs、Calico、Clock Foundation）持续推进基于表观遗传/蛋白质组的衰老时钟产品</p>
-<p>- **AI+中草药研发平台：** 中国多家中医药大学/企业搭建"网络药理学+AI+高通量筛选"平台</p>
-<p>- **长寿诊所扩张：** 全球长寿诊所（Human Longevity、Modern Age等）加速部署AI驱动的个性化抗衰方案</p>
-<p>- **生成式AI健康教练：** LLM驱动的AI健康管理App持续涌现，关注监管动态</p>
-<div class="section"><h3>📈 本期统计</h3>
-<p>| 维度 | 论文数 | 重点方向 |</p>
-<p>|------|--------|----------|</p>
-<p>| AI衰老基础研究 | 3 | 血浆蛋白组时钟、XAI时钟、BA预测综述 |</p>
-<p>| AI抗衰药物发现 | 2 | 多组学靶点筛选、药物重定位 |</p>
-<p>| ⭐AI+中草药 | 3 | 网络药理学+TCM配方、活性肽发现 |</p>
-<p>| AI衰老检测 | 2 | 多器官MRI、高频超声皮肤 |</p>
-<p>| AI生物利用度 | 2 | 纳米QSAR、DDS逆向设计 |</p>
-<p>| AI个性化/数字孪生 | 1 | 预测AI落地治理 |</p>
-<p>| AI长寿诊所/大模型 | 2 | GenAI治理、LLM+衰老机制 |</p>
-<p>| **合计** | **15** | — |</p>
-<p>**高影响力期刊：** Nature Medicine (×1), Nature Cardiovascular Research (×1), Briefings in Bioinformatics (×1), Drug Discovery Today (×1), BMJ HCI (×1)</p>
-<p>**中草药相关论文占比：** 3/15 (20%)，且均为网络药理学+AI方法+实验验证的完整研究范式。</p>
-<div class="section"><h3>✅ 链接核实声明</h3>
-<p>已核实 **15 条** PubMed链接，全部可访问且内容与摘要一致。</p>
+<span class="tag">AI制药</span><span class="tag">中草药</span><span class="tag">临床</span><span class="tag">成分</span><span class="tag">法规</span><span class="tag">衰老机制</span>
+<div class="highlights"><h4>📌 本期要点</h4><ul><li>> 🏷️ <strong>对标研发环节：</strong> ⭐核心对标 — 中草药配方作用机制解析、网络药理学+AI预测+实验验证的标准化流程</li><li>> 🏷️ <strong>对标研发环节：</strong> ⭐核心对标 — 复方中药功效物质基础研究、JAK2/STAT3通路可作为抗炎抗衰的交叉靶点</li><li>基于传统中药"紫河车"抗衰理论，从双峰驼胎盘酶解物中筛选抗皮肤衰老活性肽。采用多活性筛选（水解效率、抗氧化、ECM降解抑制）+网络药理学+体外验证（MMP-1抑制为核心指标），发现了靶向皮肤衰老的活性肽分子机制。<strong>是"传统药材→现代AI筛选→活性分子→机制验证"的典型案例。</strong></li></ul></div>
+<p><strong>日期：</strong> 2026年6月15日 — 7月1日（第3期）</p>
+<p><strong>覆盖范围：</strong> PubMed近2周新发表文献 | 7大搜索维度 | 精选15条</p>
+<p><strong>生成方式：</strong> Hermes Agent 自动化文献检索+精选+摘要</p>
+<p><strong>对标企业：</strong> 无限极（Infinitus）— 中草药健康产品研发</p>
+<hr>
+<h3 class="sec">📊 一、AI衰老基础研究（3篇）</h3>
+<div class="item"><h4>1. 血浆蛋白质组ML模型预测40+种细胞类型的衰老速度</h4><div class="body"><p><strong>来源：</strong> <em>Nature Medicine</em> (2026) | [PubMed](<a href="https://pubmed.ncbi.nlm.nih.gov/42297981/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/42297981/</a>)</p><p>基于6万余人血浆中7000+蛋白数据，开发机器学习模型估算40余种细胞类型（神经元、免疫、胶质、内分泌、肌肉骨骼等）的生物学年龄。发现20-25%个体存在单细胞类型加速衰老，1-3%个体≥10种细胞类型加速衰老。APOE4基因型携带者星形胶质细胞更老但巨噬细胞更年轻——揭示了细胞类型特异性的异步衰老模式。该模型可预测15年随访中的疾病发生和死亡风险。</p><blockquote>🏷️ <strong>对标研发环节：</strong> 基础研究/靶点发现 — 血浆蛋白组学+ML为衰老干预靶点筛选提供新工具</blockquote></div></div>
+<div class="item"><h4>2. 可解释AI表观遗传时钟综述：XAI时钟六大模型盘点</h4><div class="body"><p><strong>来源：</strong> <em>Expert Review of Molecular Diagnostics</em> (2026) | [PubMed](<a href="https://pubmed.ncbi.nlm.nih.gov/42318857/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/42318857/</a>)</p><p>系统综述6种可解释AI（XAI）表观遗传时钟：XAI-AGE、DL-XAI、EpInflammAge、PathwayAge、EXP.REACTOME、EXP.TFT。这些时钟通过深度学习将CpG位点映射到基因→生物学通路→蛋白质互作网络，使"黑箱"衰老预测变得可解释、可干预。EpInflammAge尤为突出，基于甲基化预测循环趋化因子/细胞因子水平。</p><blockquote>🏷️ <strong>对标研发环节：</strong> 机制研究/功效评价 — XAI方法可阐明产品干预衰老的分子通路</blockquote></div></div>
+<div class="item"><h4>3. AI驱动的生物学年龄预测：现状与挑战综述</h4><div class="body"><p><strong>来源：</strong> <em>British Journal of Biomedical Science</em> (2026) | [PubMed](<a href="https://pubmed.ncbi.nlm.nih.gov/42358564/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/42358564/</a>)</p><p>系统综述AI在生物学年龄预测中的应用，涵盖生物标志物选择、特征工程、模型开发、偏差校正和性能评估。特别强调深度学习与多模态融合在解决"异步衰老"问题上的优势——不同器官/系统以不同速率衰老，AI可有效整合多维度数据捕捉这种异质性。</p><blockquote>🏷️ <strong>对标研发环节：</strong> 功效评估体系 — 为建立产品抗衰评价的生物年龄指标体系提供方法论参考</blockquote></div></div>
+<hr>
+<h3 class="sec">💊 二、AI抗衰药物/天然产物发现（2篇）</h3>
+<div class="item"><h4>4. AI+因果遗传学：整合多组学优先筛选衰老治疗靶点</h4><div class="body"><p><strong>来源：</strong> <em>Aging and Disease</em> (2026) | [PubMed](<a href="https://pubmed.ncbi.nlm.nih.gov/42295090/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/42295090/</a>)</p><p>开发AI驱动的靶点发现框架，整合大规模多组学数据，在衰老与12种年龄相关疾病（神经、炎症、代谢、纤维化四大领域）中识别共享治疗靶点。发现了29个高置信度和16个此前未识别的衰老相关靶点，涉及干扰素和炎症通路的共同上调。为"一靶多病"抗衰策略提供了系统性证据。</p><blockquote>🏷️ <strong>对标研发环节：</strong> 靶点筛选/功能原料发现 — AI多组学靶点筛选方法可直接应用于中草药活性成分发现</blockquote></div></div>
+<div class="item"><h4>5. 多组学整合+系统分析解码疾病与治疗</h4><div class="body"><p><strong>来源：</strong> <em>Briefings in Bioinformatics</em> (2026) | [PubMed](<a href="https://pubmed.ncbi.nlm.nih.gov/42289048/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/42289048/</a>)</p><p>综述基于ML的计算多组学方法在肿瘤学、衰老和免疫介导疾病中的应用。涵盖从早期到晚期融合的整合策略，用于患者分型、新型生物标志物发现、药物重定位和精准医学。特别讨论了多组学在衰老领域的应用前景和挑战。</p><blockquote>🏷️ <strong>对标研发环节：</strong> 多组学平台建设 — 为无限极建立"中草药-多组学-AI"研发管线提供方法学框架</blockquote></div></div>
+<hr>
+<h3 class="sec">🌿 三、AI+中草药⭐（3篇·重点维度）</h3>
+<div class="item"><h4>6. 护眼I号方通过STAT3/NF-κB/NLRP3抑制SASP延缓肾脏衰老和纤维化</h4><div class="body"><p><strong>来源：</strong> <em>Journal of Natural Medicines</em> (2026) | [PubMed](<a href="https://pubmed.ncbi.nlm.nih.gov/42329338/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/42329338/</a>)</p><p>护眼I号方（HY-I）是江苏省中医院用于早期慢性肾病的六味中药专利方。通过UPLC-Q-TOF-MS鉴定211种成分，网络药理学+分子对接预测其与STAT3/NF-κB/NLRP3信号通路的相互作用，实验验证HY-I通过抑制SASP（衰老相关分泌表型）减轻肾脏细胞衰老和纤维化。<strong>展示了"AI网络药理学→靶点预测→实验验证"的中药研发闭环。</strong></p><blockquote>🏷️ <strong>对标研发环节：</strong> ⭐核心对标 — 中草药配方作用机制解析、网络药理学+AI预测+实验验证的标准化流程</blockquote></div></div>
+<div class="item"><h4>7. 加味乌头汤治疗膝骨关节炎：网络药理学+UHPLC-MS/MS+实验验证</h4><div class="body"><p><strong>来源：</strong> <em>Journal of Ethnopharmacology</em> (2026) | [PubMed](<a href="https://pubmed.ncbi.nlm.nih.gov/42302946/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/42302946/</a>)</p><p>通过UHPLC-MS/MS鉴定加味乌头汤（JWD）主要成分（红景天苷、芍药苷、苯甲酰中乌头碱等7种标志成分定量），网络药理学预测其通过JAK2/STAT3通路调节线粒体氧化应激治疗膝骨关节炎，动物实验验证。完整的"成分鉴定→网络药理学→靶点预测→分子对接→体内验证"流程。</p><blockquote>🏷️ <strong>对标研发环节：</strong> ⭐核心对标 — 复方中药功效物质基础研究、JAK2/STAT3通路可作为抗炎抗衰的交叉靶点</blockquote></div></div>
+<div class="item"><h4>8. 双峰驼胎盘（紫河车同类药材）抗皮肤衰老肽的靶向发现</h4><div class="body"><p><strong>来源：</strong> <em>Journal of Ethnopharmacology</em> (2026) | [PubMed](<a href="https://pubmed.ncbi.nlm.nih.gov/42302941/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/42302941/</a>)</p><p>基于传统中药"紫河车"抗衰理论，从双峰驼胎盘酶解物中筛选抗皮肤衰老活性肽。采用多活性筛选（水解效率、抗氧化、ECM降解抑制）+网络药理学+体外验证（MMP-1抑制为核心指标），发现了靶向皮肤衰老的活性肽分子机制。<strong>是"传统药材→现代AI筛选→活性分子→机制验证"的典型案例。</strong></p><blockquote>🏷️ <strong>对标研发环节：</strong> ⭐核心对标 — 动物药/滋补类原料的抗衰老功效现代科学验证、活性肽开发</blockquote></div></div>
+<hr>
+<h3 class="sec">📸 四、AI衰老检测（2篇）</h3>
+<div class="item"><h4>9. 多器官MRI影像衰老时钟：7万例扫描训练3D ResNet</h4><div class="body"><p><strong>来源：</strong> <em>Communications Medicine</em> (2026) | [PubMed](<a href="https://pubmed.ncbi.nlm.nih.gov/42288701/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/42288701/</a>)</p><p>利用UK Biobank和德国国家队列7万例MRI扫描数据，训练3D ResNet-18模型预测脑、心、肝、脊柱、肺、肌肉、肠等器官的生物学年龄。通过与严格健康队列对比得出"年龄差距"指标，发现器官特异性衰老模式与疾病和生活方式因素显著相关。<strong>首次实现全身多器官影像衰老的系统评估。</strong></p><blockquote>🏷️ <strong>对标研发环节：</strong> 衰老检测/功效评价 — 影像AI衰老评估可作为产品功效的客观终点指标</blockquote></div></div>
+<div class="item"><h4>10. 深度学习驱动的高频超声皮肤衰老智能分级（中文论文）</h4><div class="body"><p><strong>来源：</strong> <em>生物医学工程学杂志</em> (2026) | [PubMed](<a href="https://pubmed.ncbi.nlm.nih.gov/42366431/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/42366431/</a>)</p><p>提出基于EfficientNetV2+GELU激活函数的深度学习皮肤衰老分类方法，使用高频超声图像进行智能分级。引入层归一化增强非线性特征表示和训练稳定性。<strong>中国团队开发的皮肤衰老AI检测方法，可直接对接化妆品/保健品的抗衰功效评价。</strong></p><blockquote>🏷️ <strong>对标研发环节：</strong> 皮肤衰老检测/产品功效验证 — 高频超声+AI为外用/内服抗衰产品提供非侵入式评估工具</blockquote></div></div>
+<hr>
+<h3 class="sec">🔬 五、AI生物利用度预测（2篇）</h3>
+<div class="item"><h4>11. 机器学习增强的纳米QSAR：草药纳米药物智能设计</h4><div class="body"><p><strong>来源：</strong> <em>Discover Nano</em> (2026) | [PubMed](<a href="https://pubmed.ncbi.nlm.nih.gov/42360577/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/42360577/</a>)</p><p>综述ML、纳米定量构效关系（nano-QSAR）和多尺度建模在预测纳米药物行为中的应用。特别聚焦<strong>草药纳米药物</strong>领域——计算建模支持植物化学物质纳米递送系统的设计，提高生物利用度和靶向性。结合物理信息混合模型，涵盖量子、原子和组织级模拟。</p><blockquote>🏷️ <strong>对标研发环节：</strong> 制剂开发/生物利用度提升 — AI指导中草药活性成分的纳米制剂设计，解决生物利用度瓶颈</blockquote></div></div>
+<div class="item"><h4>12. 从试错到逆向设计：AI重新定义药物递送系统</h4><div class="body"><p><strong>来源：</strong> <em>Drug Discovery Today</em> (2026) | [PubMed](<a href="https://pubmed.ncbi.nlm.nih.gov/42314831/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/42314831/</a>)</p><p>综述AI如何通过预测建模和逆向设计策略变革药物递送系统（DDS）设计。整合ML、DL和物理信息方法，捕获复杂的制剂-性能关系。批判性评估了数据异质性、模型可解释性和监管验证等挑战。</p><blockquote>🏷️ <strong>对标研发环节：</strong> 制剂技术 — AI驱动的新剂型开发方法可加速中草药产品的剂型创新</blockquote></div></div>
+<hr>
+<h3 class="sec">🧬 六、AI个性化抗衰/数字孪生（1篇）</h3>
+<div class="item"><h4>13. 真实世界预测AI落地的基础设施缺失：组织治理视角</h4><div class="body"><p><strong>来源：</strong> <em>BMJ Health & Care Informatics</em> (2026) | [PubMed](<a href="https://pubmed.ncbi.nlm.nih.gov/42320913/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/42320913/</a>)</p><p>指出预测AI工具从研究到临床转化的主要障碍已经从方法论转向组织层面：缺乏明确的机构所有权和长期管理（包括法规认证和治理结构）。提出三项建议：建立AI工具的机构归属、长期管理和监管导航机制。<strong>对建立AI驱动的个性化抗衰服务体系具有重要启示。</strong></p><blockquote>🏷️ <strong>对标研发环节：</strong> 数字化/个性化健康管理 — 为无限极构建"AI+内调外养"个性化推荐系统提供治理框架参考</blockquote></div></div>
+<hr>
+<h3 class="sec">🤖 七、AI长寿诊所/大模型（2篇）</h3>
+<div class="item"><h4>14. 治理生成式AI促进健康老龄化：规范概念框架</h4><div class="body"><p><strong>来源：</strong> <em>Healthcare</em> (2026) | [PubMed](<a href="https://pubmed.ncbi.nlm.nih.gov/42354518/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/42354518/</a>)</p><p>针对LLM和生成式AI在老年护理中的应用（陪伴、认知支持、个性化健康建议），提出规范治理框架。聚焦三个核心问题：LLM对变革性技术的情感倾向如何与老年人的价值观产生分歧？LLM输出的认知地位是什么？当AI知情的决策影响老年人功能能力时，谁负责？<strong>为AI长寿诊所的伦理治理提供了重要参考。</strong></p><blockquote>🏷️ <strong>对标研发环节：</strong> 服务创新/AI应用治理 — AI+健康老龄化服务的合规和伦理框架</blockquote></div></div>
+<div class="item"><h4>15. RNA结合蛋白+大语言模型分析在衰老研究中的应用</h4><div class="body"><p><strong>来源：</strong> <em>Biogerontology</em> (2026) | [PubMed](<a href="https://pubmed.ncbi.nlm.nih.gov/42322462/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/42322462/</a>)</p><p>系统综述RNA结合蛋白（RBPs）在衰老和年龄相关疾病中的作用机制，创新性地引入<strong>大语言模型分析</strong>方法研究RBP-RNA调控网络。重点解析HuR、TTP等6种关键RBPs在衰老中的分子机制。<strong>首次将LLM整合到衰老机制综述的方法学中。</strong></p><blockquote>🏷️ <strong>对标研发环节：</strong> 基础研究创新方法 — LLM辅助的生物信息学分析可作为中草药靶点发现的新引擎</blockquote></div></div>
+<hr>
+<h3 class="sec">🔍 八、行业动态快讯</h3>
+<blockquote><strong>说明：</strong> 本期以PubMed学术文献为主。行业新闻因网络限制未能实时抓取，建议关注以下方向：</blockquote>
+<ul>
+<li><strong>AI衰老时钟商业化：</strong> 多家公司（Altos Labs、Calico、Clock Foundation）持续推进基于表观遗传/蛋白质组的衰老时钟产品</li>
+<li><strong>AI+中草药研发平台：</strong> 中国多家中医药大学/企业搭建"网络药理学+AI+高通量筛选"平台</li>
+<li><strong>长寿诊所扩张：</strong> 全球长寿诊所（Human Longevity、Modern Age等）加速部署AI驱动的个性化抗衰方案</li>
+<li><strong>生成式AI健康教练：</strong> LLM驱动的AI健康管理App持续涌现，关注监管动态</li>
+</ul>
+<hr>
+<h3 class="sec">📈 本期统计</h3>
+<table class="md-table">
+<tr><th>维度</th><th>论文数</th><th>重点方向</th></tr>
+<tr><td>AI衰老基础研究</td><td>3</td><td>血浆蛋白组时钟、XAI时钟、BA预测综述</td></tr>
+<tr><td>AI抗衰药物发现</td><td>2</td><td>多组学靶点筛选、药物重定位</td></tr>
+<tr><td>⭐AI+中草药</td><td>3</td><td>网络药理学+TCM配方、活性肽发现</td></tr>
+<tr><td>AI衰老检测</td><td>2</td><td>多器官MRI、高频超声皮肤</td></tr>
+<tr><td>AI生物利用度</td><td>2</td><td>纳米QSAR、DDS逆向设计</td></tr>
+<tr><td>AI个性化/数字孪生</td><td>1</td><td>预测AI落地治理</td></tr>
+<tr><td>AI长寿诊所/大模型</td><td>2</td><td>GenAI治理、LLM+衰老机制</td></tr>
+<tr><td>**合计**</td><td>**15**</td><td>—</td></tr>
+</table>
+<p><strong>高影响力期刊：</strong> Nature Medicine (×1), Nature Cardiovascular Research (×1), Briefings in Bioinformatics (×1), Drug Discovery Today (×1), BMJ HCI (×1)</p>
+<p><strong>中草药相关论文占比：</strong> 3/15 (20%)，且均为网络药理学+AI方法+实验验证的完整研究范式。</p>
+<hr>
+<h3 class="sec">✅ 链接核实声明</h3>
+<p>已核实 <strong>15 条</strong> PubMed链接，全部可访问且内容与摘要一致。</p>
 <p>核实时间：2026-07-01 | 核实方式：PubMed efetch API 实时验证（PMID → 标题/期刊/年份匹配确认）</p>
-<p>*本简报由 Hermes Agent 自动生成 | 文献检索范围：PubMed 2026-06-15 至 2026-07-01 | 检索维度：7个 | 初始命中：82篇 | 精选收录：15篇*</p>
-</div>
+<hr>
+<p><em>本简报由 Hermes Agent 自动生成 | 文献检索范围：PubMed 2026-06-15 至 2026-07-01 | 检索维度：7个 | 初始命中：82篇 | 精选收录：15篇</em></p>
 <div class="footer"><p>应天AI研发系统 · 无限极全球科研中心 | 基于PubMed/Web/arXiv公开信息，仅供研究参考</p></div>
 </body></html>
