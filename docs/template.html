@@ -30,17 +30,31 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans SC",sa
 .archive-section{max-width:1100px;margin:40px auto;padding:0 24px 60px}
 .archive-section h2{font-size:1.3em;margin-bottom:20px;color:var(--text)}
 .archive-inner{padding:24px 28px;background:var(--card-bg);border:1px solid var(--border);border-radius:16px}
-.archive-tools{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
-.archive-tools input,.archive-tools select{padding:8px 14px;background:#252836;border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.9em}
-.archive-tools input{flex:1;min-width:200px}
-.archive-tools select{min-width:120px}
-.arch-grid{display:flex;flex-direction:column;gap:4px}
-.arch-item{display:flex;align-items:center;gap:10px;padding:6px 10px;border-radius:6px;transition:background .2s}
+.archive-tools{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.archive-tools input,.archive-tools select{padding:10px 16px;background:#252836;border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:.92em;outline:none}
+.archive-tools input{flex:1;min-width:220px}.archive-tools input:focus{border-color:#667eea}
+.archive-tools select{min-width:130px;cursor:pointer}
+.arch-week-group{margin-bottom:16px}
+.arch-week-header{display:flex;align-items:center;gap:10px;padding:8px 0;color:var(--text);font-weight:700;cursor:pointer;user-select:none}
+.arch-week-header:hover{color:#667eea}
+.arch-week-count{font-size:.8em;color:var(--text-secondary);font-weight:400}
+.arch-week-header .arrow{transition:transform .2s;font-size:.8em}
+.arch-week-header.collapsed .arrow{transform:rotate(-90deg)}
+.arch-week-items{display:flex;flex-direction:column;gap:3px;padding-left:16px}
+.arch-week-header.collapsed+.arch-week-items{display:none}
+.arch-item{display:flex;align-items:center;gap:10px;padding:7px 12px;border-radius:8px;transition:background .15s}
 .arch-item:hover{background:#252836}
-.arch-item a{color:#667eea;text-decoration:none;flex:1}
+.arch-item a{color:#667eea;text-decoration:none;flex:1;font-size:.93em}
 .arch-item a:hover{text-decoration:underline}
-.arch-week-tag{font-size:.78em;color:#8b8fa3;min-width:70px}
-.arch-mod-tag{font-size:.75em;padding:2px 8px;background:#1a1d27;border-radius:4px;color:var(--text-secondary);min-width:42px;text-align:center}
+.arch-mod-tag{font-size:.75em;padding:3px 10px;border-radius:10px;font-weight:600;white-space:nowrap}
+.tag-academic{background:#1a2740;color:#667eea}
+.tag-industry{background:#1a3028;color:#38ef7d}
+.tag-ai{background:#2a1a35;color:#f5576c}
+.tag-food{background:#1a3020;color:#43e97b}
+.tag-beauty{background:#301a2a;color:#fbc2eb}
+.tag-women{background:#302a1a;color:#fcb69f}
+.arch-highlight{background:#f0c04033;border-radius:2px}
+.arch-result-count{font-size:.85em;color:var(--text-secondary);margin-bottom:12px}
 .empty{color:var(--text-secondary);font-style:italic}
 .footer{text-align:center;padding:30px;color:var(--text-secondary);font-size:.85em;border-top:1px solid var(--border)}
 </style>
@@ -58,7 +72,9 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans SC",sa
 <div class="archive-section"><h2>📚 往期归档</h2><div class="archive-inner"><!-- archive --></div></div>
 <footer class="footer"><p>应天AI研发系统 · 无限极全球科研中心 | 自动生成于 {{date}}</p><p style="margin-top:4px;font-size:.8em">基于 PubMed · Web · arXiv 公开信息 | 仅供研究参考</p></footer>
 <script>
-function filterArchive(){var s=document.getElementById('arch-search').value.toLowerCase();var m=document.getElementById('arch-module').value;var items=document.querySelectorAll('.arch-item');var found=0;items.forEach(function(el){var title=el.dataset.title.toLowerCase();var mod=el.dataset.module;var week=el.dataset.week;var match=(!s||title.includes(s)||week.includes(s))&&(!m||mod===m);el.style.display=match?'flex':'none';if(match)found++});document.getElementById('arch-empty').style.display=found?'none':'block'}
+var allItems=[];
+function filterArchive(){var s=document.getElementById('arch-search').value.toLowerCase().trim();var m=document.getElementById('arch-module').value;var found=0;var total=0;document.querySelectorAll('.arch-week-group').forEach(function(g){var hasVisible=false;g.querySelectorAll('.arch-item').forEach(function(el){var t=el.dataset.title.toLowerCase();var mod=el.dataset.module;var w=el.dataset.week;var match=(!s||t.includes(s)||w.includes(s))&&(!m||mod===m);el.style.display=match?'flex':'none';if(match){hasVisible=true;found++}total++});g.style.display=hasVisible?'block':'none'});document.getElementById('arch-result-count').textContent=s||m?found+'/'+total+' 条匹配':'';document.getElementById('arch-empty').style.display=found?'none':'block'}
+function toggleWeek(el){el.classList.toggle('collapsed')}
 </script>
 </body>
 </html>

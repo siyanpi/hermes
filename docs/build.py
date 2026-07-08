@@ -237,7 +237,7 @@ def _extract_tags(content: str) -> list:
 
 
 def archive_index() -> str:
-    """Generate archive with search/filter support."""
+    """Generate archive with collapsible week groups + colored tags + search."""
     all_files = []
     for f in sorted(ARCHIVE_DIR.glob("**/*.md"), reverse=True):
         all_files.append(f)
@@ -250,29 +250,33 @@ def archive_index() -> str:
 
     labels = {k: f"{v['icon']} {v['title']}" for k, v in BRIEFINGS.items()}
     mod_labels = {"academic":"学术","industry":"产业","ai_aging":"AI","ai_apps":"AI应用","competitor_food":"健食","competitor_beauty":"美妆","competitor_women":"女性"}
+    tag_class = {"学术":"tag-academic","产业":"tag-industry","AI":"tag-ai","AI应用":"tag-ai","健食":"tag-food","美妆":"tag-beauty","女性":"tag-women"}
 
-    # Group by week
     weeks = {}
     for f in all_files:
         w = f.parent.name
         weeks.setdefault(w, []).append(f)
 
-    # Build HTML with data attributes for search
-    items_html = []
+    groups = []
     for week in sorted(weeks.keys(), reverse=True):
         files = weeks[week]
+        items = []
         for f in sorted(files):
             k = next((k for k in labels if k in f.stem), "")
             mod = mod_labels.get(k, "")
-            fname = f.name
+            tc = tag_class.get(mod, "")
             rel = str(f.relative_to(PORTAL_DIR))
-            items_html.append(f'<div class="arch-item" data-week="{week}" data-module="{mod}" data-title="{fname}"><span class="arch-week-tag">{week}</span><span class="arch-mod-tag">{mod}</span><a href="{rel}">{labels.get(k, fname)}</a></div>')
+            items.append(f'<div class="arch-item" data-week="{week}" data-module="{mod}" data-title="{f.name}"><span class="arch-mod-tag {tc}">{mod}</span><a href="{rel}">{labels.get(k, f.name)}</a></div>')
+        if items:
+            groups.append(f'<div class="arch-week-group"><div class="arch-week-header" onclick="toggleWeek(this)"><span class="arrow">▼</span>📅 {week} <span class="arch-week-count">({len(items)}篇)</span></div><div class="arch-week-items">{"".join(items)}</div></div>')
 
     return f"""<div class="archive-tools">
-<input type="text" id="arch-search" placeholder="🔍 搜索归档..." oninput="filterArchive()">
+<input type="text" id="arch-search" placeholder="🔍 按关键词搜索归档..." oninput="filterArchive()">
 <select id="arch-module" onchange="filterArchive()"><option value="">全部模块</option>{"".join(f'<option value="{v}">{v}</option>' for v in sorted(set(mod_labels.values()))) if mod_labels else ""}</select>
-</div><div class="arch-grid" id="arch-grid">{"".join(items_html)}</div>
-<div id="arch-empty" style="display:none" class="empty">无匹配结果</div>""" if items_html else "<p class='empty'>暂无归档记录</p>"
+</div>
+<div id="arch-result-count" class="arch-result-count"></div>
+<div id="arch-grid">{"".join(groups)}</div>
+<div id="arch-empty" style="display:none" class="empty">无匹配结果</div>""" if groups else "<p class='empty'>暂无归档记录</p>"
 
 
 def generate_page(content: str, title: str, icon: str) -> str:
