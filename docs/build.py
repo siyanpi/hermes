@@ -236,8 +236,24 @@ def _extract_tags(content: str) -> list:
     return sorted(found)
 
 
+def _extract_text_snippet(path: Path, max_chars: int = 300) -> str:
+    """Extract plain text from md/html file for search indexing."""
+    try:
+        raw = path.read_text(encoding="utf-8")
+        if path.suffix == ".html":
+            # Strip HTML tags
+            raw = re.sub(r'<style[^>]*>.*?</style>', '', raw, flags=re.DOTALL)
+            raw = re.sub(r'<[^>]+>', ' ', raw)
+        # Strip markdown syntax
+        raw = re.sub(r'[#*>`|\[\]()_~]', ' ', raw)
+        raw = re.sub(r'\s+', ' ', raw).strip()
+        return raw[:max_chars]
+    except:
+        return ""
+
+
 def archive_index() -> str:
-    """Generate archive with collapsible week groups + colored tags + search."""
+    """Generate archive with full-text search, collapsible weeks, colored tags."""
     all_files = []
     for f in sorted(ARCHIVE_DIR.glob("**/*.md"), reverse=True):
         all_files.append(f)
@@ -266,12 +282,13 @@ def archive_index() -> str:
             mod = mod_labels.get(k, "")
             tc = tag_class.get(mod, "")
             rel = str(f.relative_to(PORTAL_DIR))
-            items.append(f'<div class="arch-item" data-week="{week}" data-module="{mod}" data-title="{f.name}"><span class="arch-mod-tag {tc}">{mod}</span><a href="{rel}">{labels.get(k, f.name)}</a></div>')
+            snippet = _extract_text_snippet(f).replace('"', "'")
+            items.append(f'<div class="arch-item" data-week="{week}" data-module="{mod}" data-title="{f.name}" data-content="{snippet}"><span class="arch-mod-tag {tc}">{mod}</span><a href="{rel}">{labels.get(k, f.name)}</a></div>')
         if items:
             groups.append(f'<div class="arch-week-group"><div class="arch-week-header" onclick="toggleWeek(this)"><span class="arrow">▼</span>📅 {week} <span class="arch-week-count">({len(items)}篇)</span></div><div class="arch-week-items">{"".join(items)}</div></div>')
 
     return f"""<div class="archive-tools">
-<input type="text" id="arch-search" placeholder="🔍 按关键词搜索归档..." oninput="filterArchive()">
+<input type="text" id="arch-search" placeholder="🔍 搜索归档标题+正文..." oninput="filterArchive()">
 <select id="arch-module" onchange="filterArchive()"><option value="">全部模块</option>{"".join(f'<option value="{v}">{v}</option>' for v in sorted(set(mod_labels.values()))) if mod_labels else ""}</select>
 </div>
 <div id="arch-result-count" class="arch-result-count"></div>
