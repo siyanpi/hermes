@@ -246,6 +246,7 @@ def _extract_text_snippet(path: Path, max_chars: int = 300) -> str:
             raw = re.sub(r'<[^>]+>', ' ', raw)
         # Strip markdown syntax
         raw = re.sub(r'[#*>`|\[\]()_~]', ' ', raw)
+        raw = raw.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
         raw = re.sub(r'\s+', ' ', raw).strip()
         return raw[:max_chars]
     except:
