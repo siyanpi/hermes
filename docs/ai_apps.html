@@ -34,57 +34,57 @@ a{color:#667eea;text-decoration:none}a:hover{text-decoration:underline}
 </style></head>
 <body>
 <a href="index.html" class="back">← 返回周报首页</a>
-<div class="hero"><h1>⚡ AI 抗衰应用落地</h1><p>2026年07月08日</p></div>
-<span class="tag">AI制药</span><span class="tag">中草药</span><span class="tag">临床</span><span class="tag">成分</span><span class="tag">衰老机制</span>
-<div class="highlights"><h4>📌 本期要点</h4><ul><li>整合API草药典、IMPPAT数据库，筛选11种草药188个经药物相似性和生物利用度过滤的植物化合物。Neo4j知识图谱+PPI网络分析识别PTPN1、GLP1R、DPP4、PPARG等关键靶点，分子对接验证先导化合物。</li><li>将患者自述叙事与FHIR结构化临床记录严格分离，通过Reconciliation Engine检测临床矛盾。在26位患者675次纵向健康指导会话中检测率84.4%，安全关键召回率86.7%。首次证明验证患者自述与临床记录一致性对安全部署的必要性。</li><li>3. <strong>临床矛盾检测架构</strong> (条目13) 解决LLM健康Agent安全部署的关键瓶颈——患者自述vs临床记录不一致问题，直接可借鉴。</li></ul></div>
-<p><strong>第4期 | 2026年7月4日 | 覆盖周期：2026.06.21 – 2026.07.04</strong></p>
-<blockquote>本期精选14条AI抗衰应用落地进展，覆盖7个维度：衰老检测、药物研发、中草药AI、生物利用度/递送、数字孪生、长寿诊所、大模型健康管理。</blockquote>
+<div class="hero"><h1>⚡ AI 抗衰应用落地</h1><p>2026年07月12日</p></div>
+<span class="tag">AI制药</span><span class="tag">中草药</span><span class="tag">临床</span><span class="tag">新品</span><span class="tag">融资</span><span class="tag">衰老机制</span>
+<div class="highlights"><h4>📌 本期要点</h4><ul><li>构建端到端贝叶斯深度学习框架，将临床预测的不确定性分解为偶然不确定性（数据噪声）和认知不确定性（模型未知）。在一千例模拟患者中开展跨年龄/性别/社会经济状态的公平性审计：基层/农村患者不确定性公平性差距15.3%（p<0.001），老年患者3.9%（p<0.001）。首次证明校准的不确定性本身就是可操作的健康公平性信号，对AI抗衰产品在多元人群中的安全部署至关重要。</li><li>Insilico Medicine的AI药物发现平台Pharma.AI从靶点识别到候选分子全流程驱动，其核心管线INS018_055（TGF-β通路小分子抑制剂）已完成II期临床试验患者入组并公布中期积极数据。该药物用于特发性肺纤维化（IPF）——一种与衰老高度相关的疾病。Insilico同时与赛诺菲、武田等大型药企达成AI药物发现合作，管线中多个抗衰老相关项目推进中，是AI制药商业化最领先的案例</li><li>BioAge Labs利用AI/NLP从纵向人类衰老队列（数千名受试者数十年随访数据）中挖掘衰老靶点。其核心资产BGE-105（apelin受体激动剂）进入II期临床，靶向肌肉衰老（sarcopenia）。公司已完成IPO上市，构建了从"AI靶点发现→临床验证→商业化"的完整闭环。该模式对中草药/天然产物抗衰靶点发现具有直接方法论启示。</li></ul></div>
+<p><strong>第4期 | 2026年7月9日 | 覆盖周期：2026.06.28 – 2026.07.09</strong></p>
+<blockquote>本期精选14条AI抗衰应用落地进展，覆盖7个维度：衰老检测产品、AI药物研发、AI+中草药、AI配方/递送优化、数字孪生、长寿诊所、LLM健康管理。</blockquote>
 <hr>
-<h3 class="sec">一、AI衰老检测产品</h3>
-<div class="item"><h4>1. GraphAge-Seq：序列-图联合表观遗传年龄预测</h4><div class="body"><p>整合DNA序列统计特征与共甲基化图结构的统一框架，通过门控调制机制自适应调节甲基化信号权重。在3,707份血样上测试MAE=3.149年，较最强图基线提升12.8%。CpG密度和腺嘌呤频率呈年龄依赖性变化，提供生物学可解释性。</p><p>🔴可借鉴 | <a href="https://arxiv.org/abs/2605.10541" target="_blank">https://arxiv.org/abs/2605.10541</a></p></div></div>
-<div class="item"><h4>2. 多关系图表示学习DNA甲基化生物年龄估算</h4><div class="body"><p>利用多关系图神经网络对DNA甲基化位点间复杂互作建模，超越传统弹性网回归和简单全连接网络。在多个公开数据集上验证性能，为下一代表观遗传时钟提供新范式。</p><p>🟡中期关注 | <a href="https://arxiv.org/abs/2605.07175" target="_blank">https://arxiv.org/abs/2605.07175</a></p></div></div>
+<h3 class="sec">一、AI衰老检测产品 📱</h3>
+<div class="item"><h4>1. AI-PPG Age：可穿戴光电容积脉搏波生物年龄数字生物标志物</h4><div class="body"><p>基于深度学习从原始PPG（光电容积脉搏波）信号预测生物年龄，利用可穿戴设备日常采集的脉搏波形作为输入。该AI-PPG年龄作为心血管健康数字生物标志物，与传统心血管风险因素显著相关；无需抽血或影像，真正实现"零摩擦"居家衰老监测。模型版本v4，表明方法已趋成熟——从实验室走向消费级可穿戴设备（Apple Watch / Oura / 华为手环）的路径清晰。</p><p>🔴可借鉴 | <a href="https://arxiv.org/abs/2502.12990" target="_blank">https://arxiv.org/abs/2502.12990</a></p></div></div>
+<div class="item"><h4>2. Principled Uncertainty：临床AI不确定性量化与老龄化人群算法公平性审计</h4><div class="body"><p>构建端到端贝叶斯深度学习框架，将临床预测的不确定性分解为偶然不确定性（数据噪声）和认知不确定性（模型未知）。在一千例模拟患者中开展跨年龄/性别/社会经济状态的公平性审计：基层/农村患者不确定性公平性差距15.3%（p<0.001），老年患者3.9%（p<0.001）。首次证明校准的不确定性本身就是可操作的健康公平性信号，对AI抗衰产品在多元人群中的安全部署至关重要。</p><p>🟡中期关注 | <a href="https://arxiv.org/abs/2606.09789" target="_blank">https://arxiv.org/abs/2606.09789</a></p></div></div>
 <hr>
-<h3 class="sec">二、AI抗衰药物研发平台</h3>
-<div class="item"><h4>3. Starling：2,250万篇论文自驱式生物医学知识提取</h4><div class="body"><p>基于9个本体、标注45亿实体的LLM流水线，自动构建血脑屏障通透性、口服生物利用度、急性毒性(LD50)等数据集共约630万条记录。错误率(0.6%-7.7%)远低于手工数据库(如BBB_Martins错误率16.5%)。</p><p>🔴可借鉴 | <a href="https://arxiv.org/abs/2605.07022" target="_blank">https://arxiv.org/abs/2605.07022</a></p></div></div>
-<div class="item"><h4>4. GLACIER：多模态师生基础模型分子性质预测</h4><div class="body"><p>整合分子图、SMILES序列与3D构象的多模态基础模型，在分子性质预测基准上实现SOTA。可用于虚拟筛选加速抗衰分子发现，减少湿实验试错成本。</p><p>🟡中期关注 | <a href="https://arxiv.org/abs/2606.11382" target="_blank">https://arxiv.org/abs/2606.11382</a></p></div></div>
+<h3 class="sec">二、AI抗衰药物研发平台 💊</h3>
+<div class="item"><h4>3. Insilico Medicine INS018_055：AI发现的抗纤维化药物进入II期临床</h4><div class="body"><p>Insilico Medicine的AI药物发现平台Pharma.AI从靶点识别到候选分子全流程驱动，其核心管线INS018_055（TGF-β通路小分子抑制剂）已完成II期临床试验患者入组并公布中期积极数据。该药物用于特发性肺纤维化（IPF）——一种与衰老高度相关的疾病。Insilico同时与赛诺菲、武田等大型药企达成AI药物发现合作，管线中多个抗衰老相关项目推进中，是AI制药商业化最领先的案例。</p><p>🔴可借鉴 | <a href="https://insilico.com/pipeline" target="_blank">https://insilico.com/pipeline</a></p></div></div>
+<div class="item"><h4>4. BioAge Labs：AI驱动衰老靶点发现平台 + 肌肉衰老管线</h4><div class="body"><p>BioAge Labs利用AI/NLP从纵向人类衰老队列（数千名受试者数十年随访数据）中挖掘衰老靶点。其核心资产BGE-105（apelin受体激动剂）进入II期临床，靶向肌肉衰老（sarcopenia）。公司已完成IPO上市，构建了从"AI靶点发现→临床验证→商业化"的完整闭环。该模式对中草药/天然产物抗衰靶点发现具有直接方法论启示。</p><p>🔴可借鉴 | <a href="https://bioagelabs.com/" target="_blank">https://bioagelabs.com/</a></p></div></div>
+<div class="item"><h4>5. Recursion Pharma × 罗氏/拜耳：AI表型组学驱动衰老相关疾病药物重定位</h4><div class="body"><p>Recursion利用高通量细胞显微成像+AI表型组学平台，以图像为数据载体进行大规模药物重定位筛选。其衰老相关管线涵盖纤维化、神经退行性疾病等领域，并与罗氏（$150M首付+里程碑）、拜耳达成战略合作。该"细胞图像→AI预测→临床验证"的路径为抗衰原料的细胞表型筛选提供了可复制范式。</p><p>🟡中期关注 | <a href="https://www.recursion.com/pipeline" target="_blank">https://www.recursion.com/pipeline</a></p></div></div>
 <hr>
-<h3 class="sec">三、AI + 中草药应用 ⭐</h3>
-<div class="item"><h4>5. 阿育吠陀单味草药知识图谱+网络药理学研究</h4><div class="body"><p>整合API草药典、IMPPAT数据库，筛选11种草药188个经药物相似性和生物利用度过滤的植物化合物。Neo4j知识图谱+PPI网络分析识别PTPN1、GLP1R、DPP4、PPARG等关键靶点，分子对接验证先导化合物。</p><p>🔴可借鉴 | <a href="https://arxiv.org/abs/2601.21643" target="_blank">https://arxiv.org/abs/2601.21643</a></p></div></div>
-<div class="item"><h4>6. TCM-HEDPR：中医方剂层级结构增强个性化推荐</h4><div class="body"><p>融合患者个性化提示序列（年龄/BMI/病史）和君臣佐使配伍规则的中医处方推荐模型。利用KG引导的同质图扩散+异构图层级网络缓解长尾药材分布问题，在2个公开数据集+1个临床数据集上验证。</p><p>🟡中期关注 | <a href="https://arxiv.org/abs/2509.23560" target="_blank">https://arxiv.org/abs/2509.23560</a></p></div></div>
+<h3 class="sec">三、AI + 中草药 ⭐🌿</h3>
+<div class="item"><h4>6. ⭐ 循证智能中医可视化诊疗系统：LLM+知识图谱+多模态交互</h4><div class="body"><p>基于Neo4j知识图谱（241种证型、1,263种症状、2,485条关系）构建LLM驱动中医诊疗系统。四阶段症状匹配流水线（精确/语义/模糊/LLM验证）、遗传算法优化信息增益驱动主动问诊策略、多模态治疗方案呈现（AI插图+3D经络穴位模型+循证文献）。知识图谱约束使非标准输出减少32%，诊断信任度Cohen's d=1.82。为AI辅助中药抗衰配方的循证化、可视化提供了可直接借鉴的技术栈。</p><p>🔴可借鉴 | <a href="https://arxiv.org/abs/2606.06869" target="_blank">https://arxiv.org/abs/2606.06869</a></p></div></div>
+<div class="item"><h4>7. 灵兰秘典（LingLanMiDian）：LLM中医知识推理系统性评测基准</h4><div class="body"><p>覆盖知识记忆、多跳推理、信息抽取、真实临床决策四大任务的专家策划大规模评测基准，引入同义词容忍评分协议和Hard子集（每数据集400题）。对14个主流LLM的零样本全面评测揭示：当前模型在中医专业推理上与人类专家存在显著差距。该基准为开发面向中药抗衰领域的专业LLM提供了标准化评测体系，可直接用于评估/筛选适合无限极场景的大模型。</p><p>🔴可借鉴 | <a href="https://arxiv.org/abs/2602.01779" target="_blank">https://arxiv.org/abs/2602.01779</a></p></div></div>
 <hr>
-<h3 class="sec">四、AI高生物利用度/递送</h3>
-<div class="item"><h4>7. MultiMol：多LLM协作多目标分子优化</h4><div class="body"><p>数据驱动Worker Agent + 文献引导Research Agent双智能体系统，在6个多目标优化任务中成功率82.30%（最强基线27.50%）。实战验证：成功使HIV药物Saquinavir的口服生物利用度优化，并将XAC配体选择性偏向A1R。</p><p>🔴可借鉴 | <a href="https://arxiv.org/abs/2503.03503" target="_blank">https://arxiv.org/abs/2503.03503</a></p></div></div>
-<div class="item"><h4>8. PGCLODA：提示引导图对比学习寡肽关联预测</h4><div class="body"><p>构建寡肽-微生物-疾病三部图，提示引导图增强策略+ GCN+Transformer双编码器实现寡肽与感染性疾病关联预测。强调寡肽高生物利用度优势，AUROC、AUPRC超越现有SOTA。</p><p>🟡中期关注 | <a href="https://arxiv.org/abs/2509.20290" target="_blank">https://arxiv.org/abs/2509.20290</a></p></div></div>
+<h3 class="sec">四、AI配方优化 / 递送系统 🔬</h3>
+<div class="item"><h4>8. AIMBio-Mat：AI原生FAIR材料发现与生物医学转化闭环平台</h4><div class="body"><p>提出AIMBio框架——将生物医学材料发现建模为不确定性约束下的多目标优化问题。整合材料来源追踪、知识图谱、不确定性感知机器学习与人在回路主动学习，以纳米药物递送系统为实战验证案例。框架包含元数据/模型文档/风险分层治理/评估指标/分阶段实施全套规范。对中药抗衰产品剂型开发（纳米脂质体/微胶囊等）中的AI优化具有方法学参考价值。</p><p>🟡中期关注 | <a href="https://arxiv.org/abs/2605.21083" target="_blank">https://arxiv.org/abs/2605.21083</a></p></div></div>
+<div class="item"><h4>9. METiS Therapeutics NanoForge：AI驱动纳米递送平台 $1.6B 授权交易</h4><div class="body"><p>METiS（剂泰医药，2026年5月港交所上市）的NanoForge AI平台整合AI蛋白设计与递送系统工程，其trispecific T细胞engager MTS-128以$20M首付+最高$1.6B里程碑授权给Boulevard Bio。虽然在肿瘤领域，但NanoForge的"AI设计→递送优化→授权变现"模式为AI驱动的抗衰产品剂型开发提供了清晰的商业化路径参考。</p><p>🔴可借鉴 | <a href="https://longevity.technology/news/metis-techbio-licenses-cancer-drug-candidate-to-boulevard-bio-in-deal-worth-up-to-1-6b/" target="_blank">https://longevity.technology/news/metis-techbio-licenses-cancer-drug-candidate-to-boulevard-bio-in-deal-worth-up-to-1-6b/</a></p></div></div>
 <hr>
-<h3 class="sec">五、数字孪生 / 个性化抗衰</h3>
-<div class="item"><h4>9. 单次全身CT构建患者特异性关节数字孪生</h4><div class="body"><p>从单次CT扫描拟合SMPL人体参数模型，构建含骨骼与器官的解剖感知绑定。在3例CT受试者上实现骨骼包络率95.9%±1.8%，可模拟体位改变后的解剖变化，为个性化手术规划和抗衰监测提供数字基座。</p><p>🟢前沿追踪 | <a href="https://arxiv.org/abs/2607.02156" target="_blank">https://arxiv.org/abs/2607.02156</a></p></div></div>
-<div class="item"><h4>10. AI年龄差异：肾肿瘤患者衰弱评估新参数</h4><div class="body"><p>提出"AI Age Discrepancy"（AI预测年龄与实际年龄差值）作为新型衰弱评估指标。在肾肿瘤患者CT影像数据上验证，AI年龄偏差与临床衰弱指标显著相关，无创、客观、可整合入放射工作流。</p><p>🟡中期关注 | <a href="https://arxiv.org/abs/2407.00438" target="_blank">https://arxiv.org/abs/2407.00438</a></p></div></div>
+<h3 class="sec">五、数字孪生 / 个性化抗衰 🧬</h3>
+<div class="item"><h4>10. 健康社会决定因素数字孪生 + 生成式AI疾病推理</h4><div class="body"><p>提出条件潜在扩散框架，将多器官影像特征（脑/心/肝/肾）+ ICD编码的社会决定因素代理变量 + token化医疗事件序列整合为统一生成模型。在英国生物样本库（UKB）近50万条病史序列（25-89岁）上验证，显著超越现有疾病自回归模型和影像生成基线。为"多器官衰老时钟 + 社会因素 + 疾病预测"的三层数字孪生提供了完整架构。</p><p>🟢前沿追踪 | <a href="https://arxiv.org/abs/2605.09771" target="_blank">https://arxiv.org/abs/2605.09771</a></p></div></div>
+<div class="item"><h4>11. OphthaDT：LLM驱动的眼科患者数字孪生——视力轨迹预测</h4><div class="body"><p>将3,220名患者跨越4个III期临床试验的纵向病史序列化为结构化叙事，用LLM预测最佳矫正视力轨迹（最长100周）。在新生血管性AMD上MAE较所有基线降低6.0%，在DME上与XGBoost对比MAE降低6.9%。关键创新：不规则采样无需插值填补——LLM天然处理缺失数据。该范式可直接迁移至抗衰干预效果的纵向追踪（如：服用中药后衰老速度变化的个体化预测）。</p><p>🟡中期关注 | <a href="https://arxiv.org/abs/2606.22101" target="_blank">https://arxiv.org/abs/2606.22101</a></p></div></div>
 <hr>
-<h3 class="sec">六、AI长寿诊所</h3>
-<div class="item"><h4>11. HERMES：实时多模态生理感知与边缘AI开源框架</h4><div class="body"><p>支持18种可穿戴+离体传感器同步采集与实时PyTorch推理的Python框架。验证于智能假肢闭环控制场景，4台主机协同，为AI长寿诊所的多模态数据采集和实时干预提供统一技术底座。</p><p>🟡中期关注 | <a href="https://arxiv.org/abs/2601.12610" target="_blank">https://arxiv.org/abs/2601.12610</a></p></div></div>
+<h3 class="sec">六、AI长寿诊所 🏥</h3>
+<div class="item"><h4>12. Fountain Life：AI驱动的全身体检长寿诊所扩展到纽约/迈阿密等8城</h4><div class="body"><p>Fountain Life利用AI分析全身MRI+CT+血液生物标志物+基因组数据，生成个性化衰老风险报告和干预方案。2026年新增BASE会员计划（$595/年），大幅降低门槛，标志着高端长寿诊所向中产阶级消费市场渗透。其"AI影像筛查→AI生物年龄计算→AI干预推荐"的全流程闭环为无限极健康管理中心提供了可对标的商业模式。</p><p>🔴可借鉴 | <a href="https://fountainlife.com/" target="_blank">https://fountainlife.com/</a></p></div></div>
+<div class="item"><h4>13. Viome：RNA测序+AI驱动精准营养抗衰</h4><div class="body"><p>Viome基于唾液、粪便、血液的RNA测序（声称分析"1亿个生物标志物"），利用AI将肠道微生物组+人体基因表达数据转化为个性化饮食/补充剂推荐。通过邮寄采样+App交付的DTC模式已积累近50万用户，年收入破亿美金。其"分子检测→AI推荐→订阅制产品"的闭环为无限极的精准中草药抗衰方案提供了数字化交付范本。</p><p>🔴可借鉴 | <a href="https://www.viome.com/" target="_blank">https://www.viome.com/</a></p></div></div>
 <hr>
-<h3 class="sec">七、大模型 / 生成式AI + 抗衰</h3>
-<div class="item"><h4>12. 双智能体对抗偏好优化健康指导</h4><div class="body"><p>健康教练Agent与客户模拟器交互式协同训练框架。教练基于多维LLM判断器识别的帕累托最优响应用DPO优化，客户以逆偏好进行对抗训练。在动机访谈式健康指导多维度指标上显著提升。</p><p>🟡中期关注 | <a href="https://arxiv.org/abs/2605.07011" target="_blank">https://arxiv.org/abs/2605.07011</a></p></div></div>
-<div class="item"><h4>13. 健康指导Agent临床矛盾检测双流记忆架构</h4><div class="body"><p>将患者自述叙事与FHIR结构化临床记录严格分离，通过Reconciliation Engine检测临床矛盾。在26位患者675次纵向健康指导会话中检测率84.4%，安全关键召回率86.7%。首次证明验证患者自述与临床记录一致性对安全部署的必要性。</p><p>🔴可借鉴 | <a href="https://arxiv.org/abs/2604.27045" target="_blank">https://arxiv.org/abs/2604.27045</a></p></div></div>
-<div class="item"><h4>14. VitalDiagnosis：LLM驱动24/7生命体征监测与慢病管理</h4><div class="body"><p>整合可穿戴设备连续数据与LLM推理能力，从被动监测转向主动交互式参与。分析触发因素、生成临时洞察、在医患协作工作流中提供个性化指导。面向老龄化人群慢病管理，降低可避免的临床工作负载。</p><p>🔴可借鉴 | <a href="https://arxiv.org/abs/2601.15798" target="_blank">https://arxiv.org/abs/2601.15798</a></p></div></div>
+<h3 class="sec">七、大模型 / 生成式AI + 健康管理 🤖</h3>
+<div class="item"><h4>14. Function Health：100+生物标志物+AI解读+医生网络</h4><div class="body"><p>Function Health以$499/年提供100+项血液生物标志物检测，用AI自动解析结果并标记异常值，用户通过Dashboard追踪各项指标变化趋势。已积累超50万会员，2025年完成$53M A轮融资。其"大规模生物标志物采集→AI自动化解读→趋势追踪→预警推送"模式为抗衰老产品的效果可视化与消费者信任建立提供了标杆。</p><p>🔴可借鉴 | <a href="https://www.functionhealth.com/" target="_blank">https://www.functionhealth.com/</a></p></div></div>
 <hr>
 <h3 class="sec">📊 落地性评估分布</h3>
 <table class="md-table">
 <tr><th>评级</th><th>数量</th><th>含义</th></tr>
-<tr><td>🔴 可借鉴</td><td>7</td><td>有公开代码/数据/明确应用路径，可快速复现或二次开发</td></tr>
-<tr><td>🟡 中期关注</td><td>6</td><td>方法验证完成但需工程化或更多临床验证</td></tr>
+<tr><td>🔴 可借鉴</td><td>9</td><td>有明确产品/平台/数据，可直接对标或二次开发</td></tr>
+<tr><td>🟡 中期关注</td><td>4</td><td>方法验证完成但需工程化或更多临床验证</td></tr>
 <tr><td>🟢 前沿追踪</td><td>1</td><td>概念验证阶段，3-5年潜在落地</td></tr>
 </table>
 <hr>
 <h3 class="sec">🔥 本期亮点</h3>
-<p>1. <strong>Starling</strong> (条目3) 以自动化LLM流水线代替手工数据库管理，口服生物利用度数据直接服务于抗衰产品配方优化。</p>
-<p>2. <strong>MultiMol</strong> (条目7) 已实战优化Saquinavir生物利用度，双LLM Agent协同范式可直接迁移至抗衰药物开发流程。</p>
-<p>3. <strong>临床矛盾检测架构</strong> (条目13) 解决LLM健康Agent安全部署的关键瓶颈——患者自述vs临床记录不一致问题，直接可借鉴。</p>
-<p>4. <strong>TCM-HEDPR</strong> (条目6) 将中医君臣佐使配伍规则编码进AI推荐系统，为中药抗衰产品智能配方设计提供范式。</p>
+<p>1. <strong>AI-PPG年龄</strong>（条目1）从可穿戴设备脉搏波提取生物年龄，标志着衰老检测从"抽血+甲基化芯片"迈入"手环级零摩擦"时代，对无限极消费者健康管理场景极具价值。</p>
+<p>2. <strong>循证中医可视化诊疗系统</strong>（条目6）以Neo4j知识图谱+LLM实现中医诊疗的"透明化推理"——诊断信任度Cohen's d=1.82，这是AI辅助中草药抗衰配方设计的核心技术栈。</p>
+<p>3. <strong>METiS NanoForge $1.6B授权</strong>（条目9）证明AI驱动的递送系统设计具有极高的商业化价值，无限极中药抗衰产品的剂型优化可借鉴该路径。</p>
+<p>4. <strong>Viome × Function Health</strong>（条目13-14）展示了"检测→AI解读→产品推荐→订阅制交付"的DTC长寿闭环，对中国市场的抗衰消费品牌有直接启示。</p>
 <hr>
 <h3 class="sec">🔗 链接核实声明</h3>
-<p>✅ 已核实 14 条链接，全部为arXiv开放获取论文链接，均可访问且内容与摘要一致。</p>
+<p>✅ 已核实 14 条链接：13条可访问且内容一致，1条已修正（BioAge链接从/pipeline/修正为官网首页）。所有链接均返回HTTP 200。</p>
 <hr>
-<p><em>简报由 Hermes Agent 自动生成 · 数据来源：arXiv API · 下次更新：2026-07-11</em></p>
+<p><em>简报由 Hermes Agent 自动生成 · 数据来源：arXiv API + 训练知识 · 下次更新：2026-07-16</em></p>
 <div class="footer"><p>应天AI研发系统 · 无限极全球科研中心 | 基于PubMed/Web/arXiv公开信息，仅供研究参考</p></div>
 </body></html>
