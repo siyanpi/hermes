@@ -40,6 +40,7 @@ BRIEFINGS = {
     "competitor_food": {"title":"延衰健食 · 竞对","subtitle":"安利·汤臣倍健·Swisse·同仁堂·正官庄等","icon":"🍵","pattern":"briefing5_competitor_food_","bg":"linear-gradient(135deg,#43e97b 0%,#38f9d7 100%)","file":"competitor_food.html"},
     "competitor_beauty": {"title":"延衰美妆 · 竞对","subtitle":"欧莱雅·资生堂·雅诗兰黛·爱茉莉等","icon":"💄","pattern":"briefing6_competitor_beauty_","bg":"linear-gradient(135deg,#a18cd1 0%,#fbc2eb 100%)","file":"competitor_beauty.html"},
     "competitor_women": {"title":"女性健康 · 竞对","subtitle":"月神·BIOCARE·Swisse·生命花园等","icon":"🌸","pattern":"briefing7_competitor_women_","bg":"linear-gradient(135deg,#ffecd2 0%,#fcb69f 100%)","file":"competitor_women.html"},
+    "food_ingredients": {"title":"食品原料动态","subtitle":"新食品原料·保健食品目录·功能原料·竞对布局","icon":"🧪","pattern":"briefing8_food_ingredients_","bg":"linear-gradient(135deg,#4facfe 0%,#00f2fe 100%)","file":"food_ingredients.html"},
 }
 
 TAG_PATTERNS = {
@@ -266,8 +267,8 @@ def archive_index() -> str:
         return "<p class='empty'>暂无归档记录</p>"
 
     labels = {k: f"{v['icon']} {v['title']}" for k, v in BRIEFINGS.items()}
-    mod_labels = {"academic":"学术","industry":"产业","ai_aging":"AI","ai_apps":"AI应用","competitor_food":"健食","competitor_beauty":"美妆","competitor_women":"女性"}
-    tag_class = {"学术":"tag-academic","产业":"tag-industry","AI":"tag-ai","AI应用":"tag-ai","健食":"tag-food","美妆":"tag-beauty","女性":"tag-women"}
+    mod_labels = {"academic":"学术","industry":"产业","ai_aging":"AI","ai_apps":"AI应用","competitor_food":"健食","competitor_beauty":"美妆","competitor_women":"女性","food_ingredients":"原料"}
+    tag_class = {"学术":"tag-academic","产业":"tag-industry","AI":"tag-ai","AI应用":"tag-ai","健食":"tag-food","美妆":"tag-beauty","女性":"tag-women","原料":"tag-food"}
 
     weeks = {}
     for f in all_files:
