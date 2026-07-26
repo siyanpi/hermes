@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>应天周报 · 抗衰老情报台</title>
+<style>
+:root {
+  --bg: #0a0e17;
+  --bg-card: #0f141e;
+  --bg-panel: #141b28;
+  --border: #1e2a3a;
+  --accent: #00e5a0;
+  --accent2: #5eead4;
+  --warn: #fbbf24;
+  --alert: #f87171;
+  --text: #c9d1d9;
+  --text-dim: #64748b;
+  --text-bright: #e6edf3;
+  --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  --sans: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);display:flex;min-height:100vh;overflow-x:hidden}
+/* Sidebar */
+.sidebar{width:60px;background:var(--bg-panel);border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;padding:16px 0;position:fixed;height:100vh;z-index:10}
+.sidebar-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;margin:4px 0;color:var(--text-dim);cursor:pointer;transition:.15s;position:relative}
+.sidebar-icon:hover,.sidebar-icon.active{color:var(--accent);background:rgba(0,229,160,.1)}
+.sidebar-icon.active::before{content:'';position:absolute;left:-16px;top:50%;transform:translateY(-50%);width:3px;height:20px;background:var(--accent);border-radius:0 3px 3px 0}
+.sidebar-icon .badge{position:absolute;top:2px;right:2px;width:8px;height:8px;border-radius:50%;background:var(--alert)}
+.sidebar-spacer{flex:1}
+/* Main */
+.main{margin-left:60px;flex:1;padding:24px 32px;max-width:1400px}
+/* Header */
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+.header h1{font-size:1.6em;font-weight:700;color:var(--text-bright);letter-spacing:-.5px}
+.header h1 span{color:var(--accent)}
+.status-bar{display:flex;gap:20px;font-family:var(--mono);font-size:.75em;color:var(--text-dim)}
+.status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px}
+.status-dot.live{background:var(--accent);box-shadow:0 0 8px var(--accent)}
+.status-dot.idle{background:var(--warn)}
+.date-chip{padding:4px 12px;background:var(--bg-card);border:1px solid var(--border);border-radius:20px;font-family:var(--mono);font-size:.78em;color:var(--accent)}
+/* Section title */
+.sec-title{display:flex;align-items:center;gap:10px;margin:32px 0 16px}
+.sec-title h3{font-size:.85em;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:2px}
+.sec-title .line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.sec-title .count{font-family:var(--mono);font-size:.72em;color:var(--text-dim)}
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+@media(max-width:768px){.grid{grid-template-columns:1fr}}
+/* Card */
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s,transform .15s;cursor:pointer;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+.card:hover{border-color:rgba(0,229,160,.4);transform:translateY(-1px)}
+.card-header{display:flex;align-items:center;gap:12px;padding:16px 18px 12px}
+.card-icon{font-size:1.4em;width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(0,229,160,.08);flex-shrink:0}
+.card-info{flex:1;min-width:0}
+.card-title{font-weight:600;font-size:.95em;color:var(--text-bright)}
+.card-subtitle{font-size:.76em;color:var(--text-dim);margin-top:2px}
+.card-tag{padding:2px 8px;border-radius:12px;font-family:var(--mono);font-size:.65em;font-weight:600}
+.tag-meta{background:rgba(94,234,212,.12);color:var(--accent2)}
+.tag-alert{background:rgba(248,113,113,.12);color:var(--alert)}
+.tag-info{background:rgba(0,229,160,.12);color:var(--accent)}
+.card-body{padding:0 18px 10px;font-size:.82em;color:var(--text-dim);line-height:1.6;flex:1}
+.card-body .hl{color:var(--accent);font-weight:600}
+.card-body .doi{font-family:var(--mono);font-size:.8em;color:var(--text-dim);opacity:.7}
+.card-footer{padding:10px 18px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:.7em;color:var(--text-dim)}
+.card-footer .signal{display:flex;align-items:center;gap:5px}
+.signal-dot{width:6px;height:6px;border-radius:50%}
+.signal-dot.high{background:var(--accent)}
+.signal-dot.med{background:var(--warn)}
+/* Bottom bar */
+.bottom-bar{position:fixed;bottom:0;left:60px;right:0;height:32px;background:var(--bg-panel);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 20px;font-family:var(--mono);font-size:.65em;color:var(--text-dim);gap:20px}
+.bottom-bar .item{display:flex;align-items:center;gap:6px}
+/* Scrollbar */
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+</style>
+</head>
+<body>
+<!-- Sidebar -->
+<nav class="sidebar">
+  <div class="sidebar-icon active" title="周报">📊</div>
+  <div class="sidebar-icon" title="学术">🔬<div class="badge"></div></div>
+  <div class="sidebar-icon" title="产业">🏭</div>
+  <div class="sidebar-icon" title="竞对">👁️</div>
+  <div class="sidebar-icon" title="原料">🧪</div>
+  <div class="sidebar-spacer"></div>
+  <div class="sidebar-icon" title="搜索">🔍</div>
+  <div class="sidebar-icon" title="设置">⚙️</div>
+</nav>
+
+<!-- Main -->
+<div class="main">
+  <header class="header">
+    <div>
+      <h1>应天<span>·</span>抗衰老情报台</h1>
+      <div style="font-family:var(--mono);font-size:.72em;color:var(--text-dim);margin-top:4px">INFINITUS · 无限极 | ANTI-AGING INTELLIGENCE TERMINAL</div>
+    </div>
+    <div class="status-bar">
+      <span><span class="status-dot live"></span>SYS ONLINE</span>
+      <span><span class="status-dot live"></span>8/8 MODULES</span>
+      <span class="date-chip">2026-W30</span>
+    </div>
+  </header>
+
+  <!-- Section: 行业情报 -->
+  <div class="sec-title"><h3>📡 行业情报 SIGNALS</h3><div class="line"></div><div class="count">4 modules</div></div>
+  <div class="grid">
+    <!-- Card 1 -->
+    <a class="card" href="https://siyanpi.github.io/hermes/academic.html">
+      <div class="card-header">
+        <div class="card-icon">🔬</div>
+        <div class="card-info">
+          <div class="card-title">抗衰老学术前沿</div>
+          <div class="card-subtitle">线粒体 · 细胞衰老 · 中草药 · 表观遗传</div>
+        </div>
+        <span class="card-tag tag-info">L1-L4</span>
+      </div>
+      <div class="card-body">
+        <span class="hl">Senolytic联合疗法</span>改善老年烧伤创面愈合 · <span class="hl">NAD+前体</span>临床II期数据更新 · 黄芪多糖靶向<span class="hl">p16/p21</span>通路抗衰老机制阐明
+        <div class="doi" style="margin-top:6px">11篇 | PMID: 42320016 · 42295772 · 42336288</div>
+      </div>
+      <div class="card-footer">
+        <span class="signal"><span class="signal-dot high"></span>HIGH SIGNAL</span>
+        <span>07/20 08:18</span>
+      </div>
+    </a>
+
+    <!-- Card 2 -->
+    <a class="card" href="https://siyanpi.github.io/hermes/industry.html">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(94,234,212,.08)">🏭</div>
+        <div class="card-info">
+          <div class="card-title">抗衰老产业进展</div>
+          <div class="card-subtitle">逆龄疗法 · 药物管线 · 融资 · 中草药产业</div>
+        </div>
+        <span class="card-tag tag-meta">MARKET</span>
+      </div>
+      <div class="card-body">
+        David Sinclair 计划在<span class="hl">XPrize竞赛</span>测试口服重编程药物 · Fountain Life 推出<span class="hl">$595亲民会员计划</span> · 礼来27.5亿美元联手英矽智能
+        <div class="doi" style="margin-top:6px">9条 | 🔴影响 4 · 🟡关注 5</div>
+      </div>
+      <div class="card-footer">
+        <span class="signal"><span class="signal-dot high"></span>ACTIVE</span>
+        <span>07/21 09:15</span>
+      </div>
+    </a>
+
+    <!-- Card 3 -->
+    <a class="card" href="https://siyanpi.github.io/hermes/ai_aging.html">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(248,113,113,.08)">🤖</div>
+        <div class="card-info">
+          <div class="card-title">AI × 抗衰老</div>
+          <div class="card-subtitle">AI药物 · 衰老时钟 · 中草药AI · 蛋白质组学</div>
+        </div>
+        <span class="card-tag tag-alert">BREAK</span>
+      </div>
+      <div class="card-body">
+        <span class="hl">虚拟酵母</span>：LLM驱动的真核细胞全生命周期模拟(Nature 2026) · GraphAge-Seq表观遗传年龄预测 MAE=3.149年 · AI+中草药异构图神经网络突破
+        <div class="doi" style="margin-top:6px">14条 | 🔴可借鉴 3 · 🟡关注 6 · 🟢前沿 5</div>
+      </div>
+      <div class="card-footer">
+        <span class="signal"><span class="signal-dot high"></span>CRITICAL</span>
+        <span>07/26 10:38</span>
+      </div>
+    </a>
+
+    <!-- Card 4 -->
+    <a class="card" href="https://siyanpi.github.io/hermes/ai_apps.html">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(251,191,36,.08)">⚡</div>
+        <div class="card-info">
+          <div class="card-title">AI 抗衰应用落地</div>
+          <div class="card-subtitle">AI药物临床 · 长寿委员会 · 大模型 · 数字孪生</div>
+        </div>
+        <span class="card-tag tag-meta">DEPLOY</span>
+      </div>
+      <div class="card-body">
+        礼来27.5亿押注AI药物发现 · Insilico成立行业首个<span class="hl">长寿委员会</span> · Sam Altman 1.8亿布局抗衰老 · AI设计药物通过人体概念验证
+        <div class="doi" style="margin-top:6px">14条 | 7维度覆盖</div>
+      </div>
+      <div class="card-footer">
+        <span class="signal"><span class="signal-dot med"></span>TRACKING</span>
+        <span>07/23 08:33</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Section: 竞对追踪 -->
+  <div class="sec-title"><h3>👁️ 竞对追踪 SURVEILLANCE</h3><div class="line"></div><div class="count">3 modules</div></div>
+  <div class="grid">
+    <a class="card" href="https://siyanpi.github.io/hermes/competitor_food.html">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(0,229,160,.08)">🍵</div>
+        <div class="card-info"><div class="card-title">延衰健食 · 竞对</div><div class="card-subtitle">安利 · 汤臣倍健 · Swisse · 同仁堂 · 正官庄</div></div>
+        <span class="card-tag tag-info">10 TARGETS</span>
+      </div>
+      <div class="card-body">安利纽崔莱 · 汤臣倍健衰老生物标志物实验室 · Swisse周期养护系列 · 同仁堂抗衰新品 · 正官庄高丽参提取物</div>
+      <div class="card-footer"><span class="signal"><span class="signal-dot high"></span>ACTIVE</span><span>07/24</span></div>
+    </a>
+    <a class="card" href="https://siyanpi.github.io/hermes/competitor_beauty.html">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(94,234,212,.08)">💄</div>
+        <div class="card-info"><div class="card-title">延衰美妆 · 竞对</div><div class="card-subtitle">欧莱雅 · 资生堂 · 雅诗兰黛 · 爱茉莉</div></div>
+        <span class="card-tag tag-meta">5 TARGETS</span>
+      </div>
+      <div class="card-body">欧莱雅玻色因PRO 12% · 资生堂抗衰研发 · 雅诗兰黛量子生物学 · 爱茉莉太平洋人参抗衰</div>
+      <div class="card-footer"><span class="signal"><span class="signal-dot med"></span>TRACKING</span><span>07/26</span></div>
+    </a>
+    <a class="card" href="https://siyanpi.github.io/hermes/competitor_women.html">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(248,113,113,.08)">🌸</div>
+        <div class="card-info"><div class="card-title">女性健康 · 竞对</div><div class="card-subtitle">月神 · BIOCARE · Swisse · 生命花园</div></div>
+        <span class="card-tag tag-alert">10 TARGETS</span>
+      </div>
+      <div class="card-body">月神更年期舒缓配方 · BIOCARE女性益生菌 · Garden of Life有机女性复合维生素</div>
+      <div class="card-footer"><span class="signal"><span class="signal-dot med"></span>LOW SIG</span><span>07/26</span></div>
+    </a>
+  </div>
+
+  <!-- Section: 原料 -->
+  <div class="sec-title"><h3>🧪 原料追踪 RAW MATERIALS</h3><div class="line"></div><div class="count">1 module</div></div>
+  <div class="grid">
+    <a class="card" href="https://siyanpi.github.io/hermes/food_ingredients.html">
+      <div class="card-header">
+        <div class="card-icon" style="background:rgba(0,229,160,.08)">🧪</div>
+        <div class="card-info"><div class="card-title">食品原料动态</div><div class="card-subtitle">新食品原料 · 保健食品目录 · 功能原料 · 竞对布局</div></div>
+        <span class="card-tag tag-info">NMPA/FDA</span>
+      </div>
+      <div class="card-body">新食品原料审批追踪 · 保健食品原料目录更新 · 功能性食品原料趋势(透明质酸/胶原蛋白/GABA/NMN)</div>
+      <div class="card-footer"><span class="signal"><span class="signal-dot high"></span>WATCHING</span><span>07/21</span></div>
+    </a>
+  </div>
+
+  <div style="margin-top:50px"></div>
+</div>
+
+<!-- Bottom bar -->
+<div class="bottom-bar">
+  <div class="item">📡 PubMed: <span style="color:var(--accent)">CONNECTED</span></div>
+  <div class="item">🌐 Web Search: <span style="color:var(--warn)">DEGRADED</span></div>
+  <div class="item">💬 Feishu: <span style="color:var(--accent)">ONLINE</span></div>
+  <div class="item">🔄 Last Deploy: 2026-07-26 10:40 CST</div>
+  <div style="flex:1"></div>
+  <div class="item">v3.2 · INFINITUS R&amp;D</div>
+</div>
+</body>
+</html>
