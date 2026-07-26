@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>应天周报 · 抗衰老情报</title>
+<style>
+:root {
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --border: #e2e8f0;
+  --text: #1e293b;
+  --text-dim: #64748b;
+  --accent: #6366f1;
+  --accent2: #8b5cf6;
+  --green: #10b981;
+  --amber: #f59e0b;
+  --red: #ef4444;
+  --card-shadow: 0 1px 3px rgba(0,0,0,.04), 0 1px 2px rgba(0,0,0,.06);
+  --card-hover: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'SF Pro Display','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* Hero */
+.hero{text-align:center;padding:80px 20px 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 50%,rgba(99,102,241,.06) 0%,transparent 60%),radial-gradient(ellipse at 70% 50%,rgba(139,92,246,.04) 0%,transparent 60%)}
+.hero h1{font-size:2.8em;font-weight:800;letter-spacing:-1.5px;background:linear-gradient(135deg,#6366f1,#8b5cf6,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative}
+.hero p{font-size:1.15em;color:var(--text-dim);margin-top:12px;position:relative;max-width:500px;margin-left:auto;margin-right:auto}
+.hero .meta{display:inline-flex;gap:14px;margin-top:22px;position:relative}
+.hero .meta span{padding:6px 16px;background:var(--card-bg);border:1px solid var(--border);border-radius:24px;font-size:.88em;font-weight:500;color:var(--text-dim)}
+
+/* Layout */
+.container{max-width:1200px;margin:0 auto;padding:0 28px 80px}
+
+/* Section title */
+.sec-title{display:flex;align-items:center;gap:12px;margin:48px 0 20px}
+.sec-title h2{font-size:1.15em;font-weight:700;color:var(--text);letter-spacing:-.3px;white-space:nowrap}
+.sec-title .badge{padding:2px 10px;border-radius:20px;font-size:.72em;font-weight:600;background:rgba(99,102,241,.08);color:var(--accent)}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+
+/* Card */
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px;text-decoration:none;color:inherit;transition:box-shadow .25s,transform .25s;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.card:hover{box-shadow:var(--card-hover);transform:translateY(-2px)}
+.card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity .25s}
+.card:hover::after{opacity:1}
+.card-icon{font-size:2em;line-height:1}
+.card-title{font-size:1.05em;font-weight:700;letter-spacing:-.3px}
+.card-desc{font-size:.88em;color:var(--text-dim);line-height:1.55}
+.card-tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{padding:3px 10px;border-radius:14px;font-size:.7em;font-weight:600}
+.tag-purple{background:rgba(99,102,241,.1);color:var(--accent)}
+.tag-green{background:rgba(16,185,129,.1);color:var(--green)}
+.tag-amber{background:rgba(245,158,11,.1);color:var(--amber)}
+.tag-red{background:rgba(239,68,68,.1);color:var(--red)}
+.card-stat{display:flex;align-items:center;gap:8px;padding-top:8px;border-top:1px solid var(--border);font-size:.78em;color:var(--text-dim)}
+.stat-dot{width:7px;height:7px;border-radius:50%}
+.stat-dot.green{background:var(--green)}
+.stat-dot.amber{background:var(--amber)}
+
+/* Footer */
+.footer{text-align:center;padding:40px 20px;color:var(--text-dim);font-size:.82em;border-top:1px solid var(--border)}
+.footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>应天 · 抗衰老情报</h1>
+  <p>每周自动更新的抗衰老研究情报面板，覆盖学术、产业、AI 与竞对追踪</p>
+  <div class="meta">
+    <span>📅 2026 · W30</span>
+    <span>🟢 8 模块在线</span>
+    <span>⚡ 每周日自动更新</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="sec-title">
+    <h2>📡 行业情报</h2>
+    <span class="badge">4</span>
+  </div>
+  <div class="grid">
+
+    <a class="card" href="academic.html">
+      <div class="card-icon">🔬</div>
+      <div class="card-title">抗衰老学术前沿</div>
+      <div class="card-desc">PubMed 论文精选，L1-L4 证据分级。追踪线粒体衰老、细胞衰老、中草药抗衰、表观遗传等 7 个维度。</div>
+      <div class="card-tags"><span class="tag tag-purple">PubMed</span><span class="tag tag-green">L1-L4</span><span class="tag tag-purple">中草药</span></div>
+      <div class="card-stat"><span class="stat-dot green"></span> 07/20 更新 · 11 篇精选</div>
+    </a>
+
+    <a class="card" href="industry.html">
+      <div class="card-icon">🏭</div>
+      <div class="card-title">抗衰老产业进展</div>
+      <div class="card-desc">长寿诊所、药物管线、融资动态、法规审批。对标无限极六五战略与 E+W 研发体系。</div>
+      <div class="card-tags"><span class="tag tag-purple">产业</span><span class="tag tag-amber">融资</span><span class="tag tag-red">法规</span></div>
+      <div class="card-stat"><span class="stat-dot green"></span> 07/21 更新 · 9 条动态</div>
+    </a>
+
+    <a class="card" href="ai_aging.html">
+      <div class="card-icon">🤖</div>
+      <div class="card-title">AI × 抗衰老</div>
+      <div class="card-desc">AI 药物发现、衰老时钟、中草药 AI、数字孪生。PubMed + 行业双线追踪。</div>
+      <div class="card-tags"><span class="tag tag-purple">AI</span><span class="tag tag-green">中草药AI</span><span class="tag tag-red">Nature</span></div>
+      <div class="card-stat"><span class="stat-dot green"></span> 07/26 更新 · 14 条精选</div>
+    </a>
+
+    <a class="card" href="ai_apps.html">
+      <div class="card-icon">⚡</div>
+      <div class="card-title">AI 抗衰应用落地</div>
+      <div class="card-desc">AI 药物临床进展、长寿委员会动态、大模型健康管理、数字孪生平台。</div>
+      <div class="card-tags"><span class="tag tag-purple">AI应用</span><span class="tag tag-amber">临床</span><span class="tag tag-green">产品</span></div>
+      <div class="card-stat"><span class="stat-dot green"></span> 07/23 更新 · 14 条精选</div>
+    </a>
+
+  </div>
+
+  <div class="sec-title">
+    <h2>👁️ 竞对追踪</h2>
+    <span class="badge">3</span>
+  </div>
+  <div class="grid">
+
+    <a class="card" href="competitor_food.html">
+      <div class="card-icon">🍵</div>
+      <div class="card-title">延衰健食 · 竞对</div>
+      <div class="card-desc">安利、汤臣倍健、Swisse、同仁堂、正官庄等 10 家健食竞品动态。</div>
+      <div class="card-tags"><span class="tag tag-purple">10家</span><span class="tag tag-amber">新品</span><span class="tag tag-green">专利</span></div>
+      <div class="card-stat"><span class="stat-dot green"></span> 07/24 更新</div>
+    </a>
+
+    <a class="card" href="competitor_beauty.html">
+      <div class="card-icon">💄</div>
+      <div class="card-title">延衰美妆 · 竞对</div>
+      <div class="card-desc">欧莱雅、资生堂、雅诗兰黛、爱茉莉太平洋等 5 家品牌动态。</div>
+      <div class="card-tags"><span class="tag tag-purple">5家</span><span class="tag tag-amber">护肤</span></div>
+      <div class="card-stat"><span class="stat-dot green"></span> 07/26 更新</div>
+    </a>
+
+    <a class="card" href="competitor_women.html">
+      <div class="card-icon">🌸</div>
+      <div class="card-title">女性健康 · 竞对</div>
+      <div class="card-desc">月神、BIOCARE、Swisse、生命花园等 10 家女性营养品动态。</div>
+      <div class="card-tags"><span class="tag tag-purple">10家</span><span class="tag tag-amber">益生菌</span></div>
+      <div class="card-stat"><span class="stat-dot amber"></span> 07/26 更新 · 信源受限</div>
+    </a>
+
+  </div>
+
+  <div class="sec-title">
+    <h2>🧪 原料追踪</h2>
+    <span class="badge">1</span>
+  </div>
+  <div class="grid">
+
+    <a class="card" href="food_ingredients.html">
+      <div class="card-icon">🧪</div>
+      <div class="card-title">食品原料动态</div>
+      <div class="card-desc">新食品原料审批、保健食品原料目录、功能性原料趋势追踪。</div>
+      <div class="card-tags"><span class="tag tag-red">NMPA</span><span class="tag tag-purple">审批</span><span class="tag tag-amber">趋势</span></div>
+      <div class="card-stat"><span class="stat-dot amber"></span> 07/21 更新</div>
+    </a>
+
+  </div>
+
+</div>
+
+<footer class="footer">
+  应天AI研发系统 · 无限极全球科研中心 · 自动生成于 2026-W30 · <a href="https://github.com/siyanpi/weekly-workbench">开源代码</a>
+</footer>
+</body>
+</html>
